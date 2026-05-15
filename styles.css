@@ -17,9 +17,9 @@
   --divider: rgba(87, 87, 87, 0.25);
   --icon-bg: rgba(31, 31, 31, 0.78);
 
-  /* horizontal gutter: 201px at >=1920, shrinks down to 16px on mobile */
-  --gutter: clamp(16px, calc((100vw - 1518px) / 2), 201px);
-  --content: min(1518px, calc(100vw - var(--gutter) * 2));
+  /* horizontal gutter: 10.5% of viewport (matches Figma 201/1920) without cap so it scales on wide monitors */
+  --gutter: clamp(16px, 10.47vw, 360px);
+  --content: calc(100vw - var(--gutter) * 2);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,10 +36,9 @@ body {
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 
-.page { width: 100%; max-width: 1920px; margin: 0 auto; position: relative; }
+.page { width: 100%; margin: 0 auto; position: relative; }
 .container {
   width: 100%;
-  max-width: 1518px;
   margin: 0 auto;
   padding-left: var(--gutter);
   padding-right: var(--gutter);
@@ -93,21 +92,20 @@ ul { list-style: none; }
 .navbar {
   width: var(--content);
   margin: 0 auto;
-  height: clamp(58px, 5vw, 96px);
-  padding: 0 clamp(14px, 1.56vw, 30px);
-  border-radius: clamp(20px, 1.67vw, 32px);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
+  height: clamp(58px, 5vw, 110px);
+  padding: 0 clamp(14px, 1.56vw, 36px);
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: clamp(12px, 1.25vw, 24px);
+  gap: clamp(12px, 1.25vw, 28px);
 }
 
 .brand { display: flex; align-items: center; }
-.brand-logo { display: block; width: clamp(34px, 2.92vw, 56px); height: auto; }
+.brand-logo { display: block; width: clamp(34px, 2.92vw, 78px); height: auto; }
 
 .nav-links {
   display: flex;
@@ -117,9 +115,9 @@ ul { list-style: none; }
 .nav-link {
   display: inline-flex;
   align-items: center;
-  padding: clamp(8px, 0.83vw, 16px) clamp(16px, 1.88vw, 36px);
-  border-radius: clamp(20px, 1.67vw, 32px);
-  font-size: clamp(13px, 1.15vw, 22px);
+  padding: clamp(8px, 0.83vw, 20px) clamp(16px, 1.88vw, 44px);
+  border-radius: clamp(20px, 1.67vw, 40px);
+  font-size: clamp(13px, 1.15vw, 28px);
   font-weight: 400;
   color: #fff;
   transition: background 0.2s ease;
@@ -133,7 +131,7 @@ ul { list-style: none; }
   gap: clamp(12px, 1.25vw, 24px);
 }
 .nav-login {
-  font-size: clamp(13px, 1.15vw, 22px);
+  font-size: clamp(13px, 1.15vw, 26px);
   font-weight: 400;
   color: #fff;
   padding: 0 6px;
@@ -156,17 +154,18 @@ ul { list-style: none; }
   box-sizing: border-box;
 }
 .btn-sm {
-  padding: clamp(8px, 0.73vw, 14px) clamp(14px, 1.46vw, 28px);
-  font-size: clamp(13px, 1.04vw, 20px);
+  padding: clamp(7px, 0.55vw, 12px) clamp(12px, 1.05vw, 22px);
+  font-size: clamp(12px, 0.85vw, 18px);
+  border-radius: clamp(10px, 0.7vw, 14px);
 }
-.btn-primary { background: #fff; color: #000; padding: clamp(12px, 1.25vw, 24px) clamp(20px, 2.29vw, 44px); font-size: clamp(15px, 1.46vw, 28px); }
+.btn-primary { background: #fff; color: #000; padding: clamp(12px, 1.25vw, 36px) clamp(20px, 2.29vw, 64px); font-size: clamp(15px, 1.46vw, 40px); }
 .btn-primary:hover { background: rgba(255, 255, 255, 0.92); transform: translateY(-1px); }
 .btn-ghost {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid #fff;
   color: #fff;
-  padding: clamp(12px, 1.25vw, 24px) clamp(20px, 2.29vw, 44px);
-  font-size: clamp(15px, 1.46vw, 28px);
+  padding: clamp(12px, 1.25vw, 36px) clamp(20px, 2.29vw, 64px);
+  font-size: clamp(15px, 1.46vw, 40px);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -186,7 +185,7 @@ ul { list-style: none; }
 }
 
 .hero-eyebrow {
-  font-size: clamp(28px, 3.33vw, 64px);
+  font-size: clamp(28px, 3.33vw, 92px);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: 0.01em;
@@ -195,40 +194,40 @@ ul { list-style: none; }
   margin-bottom: 0;
 }
 .hero-title {
-  font-size: clamp(40px, 5vw, 96px);
+  font-size: clamp(40px, 5vw, 140px);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: 0.01em;
   color: #fff;
-  margin: clamp(4px, 0.42vw, 8px) 0 clamp(14px, 1.25vw, 24px);
+  margin: clamp(4px, 0.42vw, 12px) 0 clamp(14px, 1.25vw, 36px);
 }
 .hero-sub {
-  font-size: clamp(15px, 1.67vw, 32px);
+  font-size: clamp(15px, 1.67vw, 48px);
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: 0.01em;
   color: var(--text-muted);
-  margin-bottom: clamp(24px, 2.5vw, 48px);
+  margin-bottom: clamp(24px, 2.5vw, 70px);
 }
 .hero-buttons {
   display: flex;
-  gap: clamp(8px, 0.68vw, 13px);
+  gap: clamp(8px, 0.68vw, 20px);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* ============ SECTIONS ============ */
 .section {
-  padding-top: clamp(24px, 2.34vw, 45px);
+  padding-top: clamp(24px, 2.34vw, 70px);
   padding-bottom: 0;
 }
-.section + .section { padding-top: clamp(24px, 2.34vw, 45px); }
+.section + .section { padding-top: clamp(24px, 2.34vw, 70px); }
 
 .section-title {
-  font-size: clamp(22px, 2.08vw, 40px);
+  font-size: clamp(22px, 2.08vw, 60px);
   font-weight: 600;
   color: #fff;
-  margin-bottom: clamp(16px, 1.56vw, 30px);
+  margin-bottom: clamp(16px, 1.56vw, 44px);
 }
 
 /* ============ ADVANTAGES ============ */
@@ -236,14 +235,17 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 856fr 632fr;
   grid-template-rows: auto auto;
-  gap: clamp(14px, 1.56vw, 30px);
+  gap: clamp(14px, 1.56vw, 44px);
 }
 
 .card {
   position: relative;
-  min-height: clamp(180px, 14.38vw, 276px);
-  padding: clamp(24px, 2.5vw, 48px);
-  border-radius: clamp(20px, 1.67vw, 32px);
+  /* Figma: 58px top, 48px sides, 39px bottom — scaled */
+  padding-top: clamp(24px, 3.02vw, 88px);
+  padding-right: clamp(20px, 2.5vw, 72px);
+  padding-bottom: clamp(18px, 2.03vw, 60px);
+  padding-left: clamp(20px, 2.5vw, 72px);
+  border-radius: clamp(20px, 1.67vw, 48px);
   background: var(--panel);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -272,40 +274,41 @@ ul { list-style: none; }
 .card > * { position: relative; z-index: 2; }
 
 .card-icon {
-  width: clamp(40px, 3.28vw, 63px);
-  height: clamp(40px, 3.33vw, 64px);
+  width: clamp(40px, 3.28vw, 92px);
+  height: clamp(40px, 3.33vw, 92px);
   border-radius: 50%;
   background: var(--icon-bg);
   border: 1px solid var(--border);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: clamp(8px, 0.73vw, 14px);
+  /* Figma: 4px gap between icon and title */
+  margin-bottom: clamp(2px, 0.21vw, 6px);
+  align-self: flex-start;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  flex-shrink: 0;
 }
 .card-icon svg { width: 50%; height: auto; }
 
 .card-title {
-  font-size: clamp(22px, 2.08vw, 40px);
+  font-size: clamp(22px, 2.08vw, 60px);
   font-weight: 600;
   color: #fff;
-  margin-bottom: clamp(4px, 0.31vw, 6px);
+  margin-bottom: clamp(4px, 0.31vw, 10px);
 }
 .card-text {
-  font-size: clamp(12px, 0.83vw, 16px);
+  font-size: clamp(12px, 0.83vw, 24px);
   font-weight: 600;
   color: var(--gray-text);
   line-height: 1.25;
-  max-width: 743px;
 }
-.card-narrow .card-text { max-width: 532px; }
 
 /* ============ PRICING ============ */
 .pricing-table {
   background: var(--panel);
-  border-radius: clamp(20px, 1.67vw, 32px);
-  padding: clamp(28px, 3.13vw, 60px) clamp(20px, 3.28vw, 63px);
+  border-radius: clamp(20px, 1.67vw, 48px);
+  padding: clamp(28px, 3.13vw, 90px) clamp(20px, 3.28vw, 94px);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
@@ -313,19 +316,19 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: minmax(60px, 0.85fr) minmax(120px, 1.15fr) minmax(80px, 1fr) minmax(80px, 1fr) minmax(70px, 0.95fr) minmax(70px, 0.85fr) auto;
   align-items: center;
-  gap: clamp(8px, 1vw, 24px);
-  padding: clamp(10px, 0.94vw, 18px) 0;
+  gap: clamp(8px, 1vw, 32px);
+  padding: clamp(10px, 0.94vw, 28px) 0;
   border-bottom: 1px solid var(--divider);
   font-family: "Inter", system-ui, sans-serif;
 }
 .pricing-row:last-child { border-bottom: 0; }
 .pricing-row > div {
-  font-size: clamp(13px, 1.04vw, 20px);
+  font-size: clamp(13px, 1.04vw, 30px);
   font-weight: 500;
   color: var(--text-soft);
 }
 .pricing-row > div:last-child { display: flex; justify-content: flex-end; }
-.pricing-head { padding-bottom: clamp(10px, 0.94vw, 18px); }
+.pricing-head { padding-bottom: clamp(10px, 0.94vw, 28px); }
 .pricing-head > div { font-weight: 200; }
 
 .btn-order {
@@ -335,10 +338,10 @@ ul { list-style: none; }
   background: #fff;
   color: #0a0a0c;
   font-family: "Inter", sans-serif;
-  font-size: clamp(12px, 0.83vw, 16px);
+  font-size: clamp(12px, 0.83vw, 24px);
   font-weight: 500;
-  padding: clamp(9px, 0.73vw, 14px) clamp(18px, 1.61vw, 31px);
-  border-radius: clamp(12px, 0.83vw, 16px);
+  padding: clamp(9px, 0.73vw, 20px) clamp(18px, 1.61vw, 46px);
+  border-radius: clamp(12px, 0.83vw, 22px);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 .btn-order:hover { background: rgba(255, 255, 255, 0.92); transform: translateY(-1px); }
@@ -364,15 +367,15 @@ ul { list-style: none; }
 }
 .join-title {
   position: relative;
-  font-size: clamp(40px, 5vw, 96px);
+  font-size: clamp(40px, 5vw, 140px);
   font-weight: 700;
   color: #fff;
-  margin-bottom: clamp(12px, 1.25vw, 24px);
+  margin-bottom: clamp(12px, 1.25vw, 36px);
   z-index: 1;
 }
 .join-sub {
   position: relative;
-  font-size: clamp(14px, 1.25vw, 24px);
+  font-size: clamp(14px, 1.25vw, 36px);
   font-weight: 500;
   color: var(--text-faint);
   z-index: 1;
@@ -382,54 +385,53 @@ ul { list-style: none; }
 .footer {
   background: var(--bg);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: clamp(28px, 2.66vw, 51px) var(--gutter) clamp(32px, 3.13vw, 60px);
+  padding: clamp(28px, 2.66vw, 76px) var(--gutter) clamp(32px, 3.13vw, 90px);
   position: relative;
   z-index: 2;
 }
 .footer-inner {
-  max-width: 1518px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: clamp(24px, 4.17vw, 80px);
+  gap: clamp(24px, 4.17vw, 120px);
   align-items: flex-start;
 }
-.footer-brand { max-width: 472px; }
-.footer-brand .brand-logo { width: clamp(40px, 3.33vw, 64px); }
+.footer-brand { max-width: clamp(320px, 32vw, 700px); }
+.footer-brand .brand-logo { width: clamp(40px, 3.33vw, 96px); }
 .footer-name {
-  font-size: clamp(15px, 1.25vw, 24px);
+  font-size: clamp(15px, 1.25vw, 36px);
   font-weight: 500;
   color: #fff;
-  margin-top: clamp(10px, 0.73vw, 14px);
+  margin-top: clamp(10px, 0.73vw, 22px);
 }
 .footer-desc {
   font-family: "Inter", sans-serif;
-  font-size: clamp(11px, 0.625vw, 12px);
+  font-size: clamp(13px, 0.94vw, 22px);
   font-weight: 400;
-  color: #fff;
-  margin-top: clamp(10px, 0.73vw, 14px);
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: clamp(10px, 0.73vw, 22px);
   line-height: 1.6;
 }
 .footer-copy {
-  font-size: clamp(12px, 0.83vw, 16px);
+  font-size: clamp(12px, 0.83vw, 24px);
   font-weight: 500;
   color: var(--text-muted);
-  margin-top: clamp(10px, 0.83vw, 16px);
+  margin-top: clamp(10px, 0.83vw, 26px);
 }
 .footer-links {
   display: grid;
   grid-template-columns: auto auto;
-  gap: clamp(10px, 0.83vw, 16px);
+  gap: clamp(10px, 0.83vw, 24px);
   justify-content: end;
 }
 .pill {
   display: inline-flex;
   align-items: center;
-  padding: clamp(8px, 0.83vw, 16px) clamp(16px, 1.88vw, 36px);
-  border-radius: clamp(20px, 1.67vw, 32px);
+  padding: clamp(8px, 0.83vw, 24px) clamp(16px, 1.88vw, 54px);
+  border-radius: clamp(20px, 1.67vw, 48px);
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
-  font-size: clamp(13px, 1.04vw, 20px);
+  font-size: clamp(13px, 1.04vw, 30px);
   font-weight: 300;
   transition: background 0.2s ease, transform 0.2s ease;
 }
