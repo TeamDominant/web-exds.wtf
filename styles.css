@@ -153,11 +153,6 @@ ul { list-style: none; }
   white-space: nowrap;
   box-sizing: border-box;
 }
-.btn-sm {
-  padding: clamp(7px, 0.55vw, 12px) clamp(12px, 1.05vw, 22px);
-  font-size: clamp(12px, 0.85vw, 18px);
-  border-radius: clamp(10px, 0.7vw, 14px);
-}
 .btn-primary { background: #fff; color: #000; padding: clamp(12px, 1.25vw, 36px) clamp(20px, 2.29vw, 64px); font-size: clamp(15px, 1.46vw, 40px); }
 .btn-primary:hover { background: rgba(255, 255, 255, 0.92); transform: translateY(-1px); }
 .btn-ghost {
@@ -170,6 +165,14 @@ ul { list-style: none; }
   -webkit-backdrop-filter: blur(20px);
 }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+
+/* Size modifier must come after color modifiers so it wins on padding/font-size */
+.btn.btn-sm {
+  padding: clamp(7px, 0.55vw, 12px) clamp(12px, 1.05vw, 22px);
+  font-size: clamp(12px, 0.85vw, 18px);
+  border-radius: clamp(10px, 0.7vw, 14px);
+  font-weight: 500;
+}
 
 /* ============ HERO CONTENT ============ */
 .hero-content {
