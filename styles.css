@@ -146,12 +146,14 @@ ul { list-style: none; }
   justify-content: center;
   font-family: inherit;
   font-weight: 600;
+  line-height: 1;
   border-radius: clamp(12px, 0.94vw, 18px);
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
   border: 0;
   text-align: center;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 .btn-sm {
   padding: clamp(8px, 0.73vw, 14px) clamp(14px, 1.46vw, 28px);
@@ -249,6 +251,7 @@ ul { list-style: none; }
   flex-direction: column;
 }
 
+/* Match Figma image fill opacity exactly: 0.15 for card 1, 0.22 for card 2 */
 .card-image::before {
   content: "";
   position: absolute;
@@ -256,20 +259,16 @@ ul { list-style: none; }
   z-index: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.35;
-  filter: brightness(0.6) contrast(1.05);
+  background-repeat: no-repeat;
 }
-.card-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(16,16,16,0.65) 0%, rgba(16,16,16,0.85) 100%),
-    linear-gradient(90deg, rgba(16,16,16,0.55) 0%, rgba(16,16,16,0) 50%, rgba(16,16,16,0.4) 100%);
+.card-image-1::before {
+  background-image: url("assets/card-connectivity.jpg");
+  opacity: 0.15;
 }
-.card-image-1::before { background-image: url("assets/card-connectivity.jpg"); }
-.card-image-2::before { background-image: url("assets/card-servers.jpg"); }
+.card-image-2::before {
+  background-image: url("assets/card-servers.jpg");
+  opacity: 0.22;
+}
 .card > * { position: relative; z-index: 2; }
 
 .card-icon {
