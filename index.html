@@ -1,208 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akenai Hosting — Deploy faster, Scale smarter</title>
-  <meta name="description" content="Akenai provides infrastructure built for developers and businesses of any scale." />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Inter:wght@200;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TeamDominant — VPN & Proxy</title>
+<meta name="description" content="TeamDominant — быстрый VPN и прокси без логов. 50+ локаций, поддержка 24/7, работает на всех устройствах." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Bad+Script&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="page">
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="glow glow-center"></div>
-        <div class="glow glow-left"></div>
-        <div class="glow glow-right"></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="mark">TD</span>
+      <span>Team<b>Dominant</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features" data-en="Features">Возможности</a>
+      <a href="#pricing" data-en="Pricing">Тарифы</a>
+      <a href="#contact" data-en="Contacts">Контакты</a>
+      <a href="faq.html" data-en="FAQ">FAQ</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="ru" class="on">RU</button>
+        <button data-lang="en">EN</button>
       </div>
+      <a href="#pricing" class="btn btn-primary" data-en="Get started">Подключить</a>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
 
-      <header class="navbar-wrap">
-        <nav class="navbar">
-          <a class="brand" href="#" aria-label="Akenai Hosting">
-            <svg class="brand-logo" width="56" height="42" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M79.6643 57.7342H96L73.3986 34.909L91.5245 17.2308H74.965L57.0629 35.3567L79.6643 57.7342Z" fill="white"/>
-              <path d="M57.2868 71.832L29.7622 44.0841L16.3357 57.2868H0L57.2868 0V71.832ZM37.8181 35.8041L45.6502 43.6364V28.4197L37.8181 35.8041Z" fill="white"/>
-            </svg>
-          </a>
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-vignette"></div>
+  <div class="wrap">
+    <h1>
+      <span data-en="Your connection,">Твоё соединение —</span>
+      <span class="accent handwrite" data-en="under your control.">под твоим контролем.</span>
+    </h1>
+    <p class="hero-slogan">It's time to Dominate, isn't it?</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary btn-lg" data-en="Choose a plan">Выбрать тариф <span class="arr">→</span></a>
+      <a href="#features" class="btn btn-ghost btn-lg" data-en="How it works">Как это работает</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span data-en="Scroll">Листай</span><span class="line"></span></div>
+</section>
 
-          <ul class="nav-links" role="menubar">
-            <li><a class="nav-link" href="#contacts">Contacts</a></li>
-            <li><a class="nav-link" href="#pricing">Pricing</a></li>
+<!-- ===================== STATS ===================== -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <div class="num"><span data-count="10">0</span><span class="u" style="font-size:0.42em; letter-spacing:0;"> Гбит/с</span></div>
+      <div class="lbl" data-en="on every channel">на каждом канале</div>
+    </div>
+    <div class="stat reveal d1">
+      <div class="num"><span data-count="99.9" data-decimals="1">0</span><span class="u">%</span></div>
+      <div class="lbl" data-en="network uptime">аптайм сети</div>
+    </div>
+    <div class="stat reveal d2">
+      <div class="num">24<span class="u">/</span>7</div>
+      <div class="lbl" data-en="live support">живая поддержка</div>
+    </div>
+    <div class="stat reveal d3">
+      <div class="num"><span class="u">0</span></div>
+      <div class="lbl" data-en="logs &amp; tracking">логов и слежки</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURES ===================== -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="Capabilities">Возможности</span>
+      <h2 data-en="Built for speed, privacy and zero hassle">Сделано для скорости, приватности и спокойствия</h2>
+      <p data-en="Everything you need to browse freely — without slowdowns, logs or limits.">Всё, что нужно для свободного доступа в сеть — без замедлений, логов и лимитов.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="glow-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke-linejoin="round"/></svg></div>
+        <h3 data-en="Speed without compromise">Скорость без компромиссов</h3>
+        <p data-en="Servers from 1 to 10 Gbit/s and a strict no-logs policy. We don't store history or watch your traffic.">Серверы от 1 до 10 Гбит/с и строгая политика отсутствия логов. Мы не храним историю и не следим за трафиком.</p>
+      </article>
+      <article class="glow-card reveal d1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3 data-en="Privacy by default">Приватность по умолчанию</h3>
+        <p data-en="Modern, audited protocols with no leaks. Your activity stays yours.">Современные протоколы без утечек. Ваша активность остаётся только вашей.</p>
+      </article>
+      <article class="glow-card reveal d2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9Z"/></svg></div>
+        <h3 data-en="Quality over quantity">Качество, а не количество</h3>
+        <p data-en="Channels up to 10 Gbit/s and only vetted data centers. We don't chase the number of locations — we chase the speed and stability of each one.">Каналы до 10 Гбит/с и только проверенные дата-центры. Мы гонимся не за числом локаций, а за скоростью и стабильностью каждой из них.</p>
+      </article>
+      <article class="glow-card reveal d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="14" height="10" rx="2"/><path d="M3 18h18M16 8h4a1 1 0 0 1 1 1v9"/></svg></div>
+        <h3 data-en="Every device, one account">Все устройства, один аккаунт</h3>
+        <p data-en="Windows, macOS, iOS, Android, Linux and routers. Connect several devices at once.">Windows, macOS, iOS, Android, Linux и роутеры. Подключайте несколько устройств сразу.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="section" id="pricing" style="background: var(--bg-2); border-block: 1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head reveal" style="max-width: 720px;">
+      <span class="kicker" data-en="Pricing">Тарифы</span>
+      <h2 data-en="One subscription. Pick your term.">Одна подписка. Выбирай срок.</h2>
+      <p data-en="Tariffs differ by the number of simultaneous devices. The longer the term — the lower the monthly price.">Тарифы отличаются количеством одновременных устройств. Чем длиннее срок — тем ниже цена за месяц.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="period" role="group" aria-label="Subscription period">
+        <button data-period="1"><span data-en="1 month">1 месяц</span></button>
+        <button data-period="3"><span data-en="3 months">3 месяца</span><span class="save">−11%</span></button>
+        <button data-period="6"><span data-en="6 months">6 месяцев</span><span class="save">−17%</span></button>
+        <button data-period="12" class="on"><span data-en="12 months">12 месяцев</span><span class="save">−25%</span></button>
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <!-- START -->
+      <article class="price-card reveal" data-tier="start">
+        <div class="tier"><span>Старт</span></div>
+        <div class="devices"><span data-en="For">Для</span> <b>1</b> <span data-en="device">устройства</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="price-permonth"></div>
+        <hr />
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="All 50+ locations">Все 50+ локаций</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Unlimited traffic, no logs">Безлимитный трафик, без логов</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Modern protocols">Современные протоколы</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Chat support">Поддержка в чате</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-en="Choose Start">Выбрать «Старт»</a>
+      </article>
+
+      <!-- PLUS -->
+      <article class="price-card featured reveal d1" data-tier="plus">
+        <div class="tier"><span>Плюс</span><span class="tag" data-en="Popular">Популярный</span></div>
+        <div class="devices"><span data-en="For">Для</span> <b>5</b> <span data-en="devices">устройств</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="price-permonth"></div>
+        <hr />
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Everything in Start">Всё из «Старт»</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 5 devices at once">До 5 устройств одновременно</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Priority servers">Приоритетные серверы</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="24/7 support">Поддержка 24/7</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" data-en="Choose Plus">Выбрать «Плюс»</a>
+      </article>
+
+      <!-- MAX -->
+      <article class="price-card reveal d2" data-tier="max">
+        <div class="tier"><span>Максимум</span></div>
+        <div class="devices"><span data-en="For">Для</span> <b>10</b> <span data-en="devices">устройств</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="price-permonth"></div>
+        <hr />
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Everything in Plus">Всё из «Плюс»</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 10 devices">До 10 устройств</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Dedicated IP on request">Выделенный IP по запросу</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Personal manager">Персональный менеджер</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-en="Choose Maximum">Выбрать «Максимум»</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT / CTA ===================== -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="cta-panel reveal">
+      <span class="kicker" data-en="Get connected">Подключение</span>
+      <h2 style="margin-top:18px;" data-en="Ready to dominate the network?">Готов доминировать в сети?</h2>
+      <p data-en="Pick a plan and we'll send setup in a couple of minutes. Questions? Write to us — we reply fast.">Выберите тариф — и мы пришлём настройку за пару минут. Есть вопросы? Напишите нам, отвечаем быстро.</p>
+      <div class="cta-actions">
+        <a href="#pricing" class="btn btn-primary btn-lg" data-en="Choose a plan">Выбрать тариф <span class="arr">→</span></a>
+        <div class="contact-links">
+          <a href="#" class="contact-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.8 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L7 13 2.4 11.5c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.6.2 1.3 1.6Z"/></svg>Telegram</a>
+          <a href="#" class="contact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>support@teamdominant.io</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top center">
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4 data-en="Product">Продукт</h4>
+          <ul>
+            <li><a href="#features" data-en="Features">Возможности</a></li>
+            <li><a href="#pricing" data-en="Pricing">Тарифы</a></li>
           </ul>
-
-          <div class="nav-cta">
-            <a class="nav-login" href="https://my.akenai.host">Log in</a>
-            <a class="btn btn-primary btn-sm" href="https://my.akenai.host">Create account</a>
-          </div>
-        </nav>
-      </header>
-
-      <div class="hero-content">
-        <p class="hero-eyebrow">With akenai</p>
-        <h1 class="hero-title">Deploy faster,<br/>Scale smarter</h1>
-        <p class="hero-sub">Akenai provides infrastructure built for<br/>developers and businesses of any scale.</p>
-        <div class="hero-buttons">
-          <a class="btn btn-ghost" href="#pricing">Pricing</a>
-          <a class="btn btn-primary" href="https://my.akenai.host">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-en="Help">Помощь</h4>
+          <ul>
+            <li><a href="faq.html" data-en="FAQ">FAQ</a></li>
+            <li><a href="#contact" data-en="Contacts">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-en="Legal">Правовое</h4>
+          <ul>
+            <li><a href="legal.html#offer" data-en="Public offer">Оферта</a></li>
+            <li><a href="legal.html#privacy" data-en="Privacy policy">Конфиденциальность</a></li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> TeamDominant</span>
+      <span data-en="Not affiliated with any real provider · demo site">Демонстрационный сайт</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- OUR ADVANTAGES -->
-    <section class="section advantages">
-      <div class="container">
-      <h2 class="section-title">Our advantages</h2>
-      <div class="cards">
-        <article class="card card-wide card-image card-image-1">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="27" height="21" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11.27 18.34c.55.55 1.25.82 2.1.79.84-.04 1.45-.35 1.83-.92l7.47-11.2-11.2 7.47c-.58.4-.9 1-.95 1.81-.05.82.2 1.5.75 2.05ZM4.13 24.34a1.8 1.8 0 0 1-1.35-.27 1.8 1.8 0 0 1-.65-.93A15.66 15.66 0 0 1 0 16.34c0-1.85.35-3.58 1.05-5.2C1.75 9.51 2.7 8.1 3.9 6.9 5.1 5.7 6.51 4.75 8.13 4.05A12.96 12.96 0 0 1 13.33 3c1.82 0 3.53.35 5.13 1.04a13.51 13.51 0 0 1 4.2 2.78 13.5 13.5 0 0 1 2.83 4.16 12.93 12.93 0 0 1 .98 6.5 12.96 12.96 0 0 1-1.75 5.55 1.8 1.8 0 0 1-1.65 1.32H4.13Z" fill="white"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Reliable connectivity</h3>
-          <p class="card-text">Our network delivers low-latency performance and reliable connectivity across Europe and beyond. By deploying infrastructure in strategically selected data centers, we ensure your services stay fast, stable, and accessible to users worldwide.</p>
-        </article>
+<!-- Tweaks -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="react">
+/* TeamDominant — Tweaks: accent color + hero background mode */
+const TD_TWEAK_DEFAULTS = {
+  "accent": "#F0F0F0",
+  "hero": "Частицы"
+};
+const TD_ACCENT_KEY = { "#F0F0F0": "mono", "#AEB6C2": "steel", "#E8B84B": "gold" };
+const TD_HERO_KEY = { "Частицы": "network", "Сетка": "grid", "Свечение": "glow" };
 
-        <article class="card card-narrow">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.35.68l.15-.01.16.01.07.01.08.02.15.05c.1.04.2.09.29.15l.14.11.34.29a13 13 0 0 0 10.46 4.01l.46-.01c.3-.02.6.08.84.25.24.17.42.42.5.7a14.7 14.7 0 0 1-.4 11.51 14.7 14.7 0 0 1-10.74 8.16 1.4 1.4 0 0 1-.67 0 14.7 14.7 0 0 1-10.75-8.16 14.7 14.7 0 0 1-.4-11.5c.08-.29.26-.54.5-.71.25-.17.55-.27.84-.25 3.65.17 7.23-1.04 10.04-3.37l.35-.3.13-.1c.09-.06.18-.11.28-.15l.15-.05c.05-.02.1-.03.16-.04Z" fill="white"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Anti-DDoS</h3>
-          <p class="card-text">Advanced DDoS protection keeps your services online by detecting and filtering malicious traffic in real time, ensuring stable performance even during large-scale attacks.</p>
-        </article>
-
-        <article class="card card-narrow">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 19.998a4 4 0 0 1-3.77 3.995L20 24h-1.33a4 4 0 0 1-3.99-3.77l-.01-.23v-4a4 4 0 0 1 3.77-3.99l.23-.01H20c.47 0 .92.08 1.33.23v-.23a8.83 8.83 0 0 0-17.83.05L3.5 12v.23c.34-.12.69-.2 1.06-.22L4.83 12h1.34a4 4 0 0 1 3.99 3.77l.01.23v4a4 4 0 0 1-3.77 3.99L6.17 24H4.83a4 4 0 0 1-3.99-3.77L.83 20v-8a12 12 0 1 1 24 0V20Z" fill="white"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Techical support</h3>
-          <p class="card-text">Our technical support team is available to all clients and ready to assist with any questions related to your services. Whether you need help with setup, troubleshooting, billing, or general inquiries.</p>
-        </article>
-
-        <article class="card card-wide card-image card-image-2">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 0a2.67 2.67 0 0 1 2.67 2.67v8a2.67 2.67 0 0 1-2.67 2.66H2.67A2.67 2.67 0 0 1 0 10.67v-8A2.67 2.67 0 0 1 2.67 0H8Zm0 16a2.67 2.67 0 0 1 2.67 2.67v2.66A2.67 2.67 0 0 1 8 24H2.67A2.67 2.67 0 0 1 0 21.33v-2.66A2.67 2.67 0 0 1 2.67 16H8Zm13.33-5.33A2.67 2.67 0 0 1 24 13.33v8A2.67 2.67 0 0 1 21.33 24H16a2.67 2.67 0 0 1-2.67-2.67v-8A2.67 2.67 0 0 1 16 10.67h5.33ZM21.33 0A2.67 2.67 0 0 1 24 2.67v2.66A2.67 2.67 0 0 1 21.33 8H16a2.67 2.67 0 0 1-2.67-2.67V2.67A2.67 2.67 0 0 1 16 0h5.33Z" fill="white"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Powerful servers</h3>
-          <p class="card-text">Our global network delivers low-latency performance and reliable connectivity across Europe and beyond. By deploying infrastructure in strategically selected data centers, we ensure your services stay fast, stable, and accessible to users worldwide.</p>
-        </article>
-      </div>
-      </div>
-    </section>
-
-    <!-- OUR PRICING -->
-    <section class="section pricing" id="pricing">
-      <div class="container">
-      <h2 class="section-title">Our pricing</h2>
-      <table class="pricing-table">
-        <thead>
-          <tr class="pricing-head">
-            <th>Plan</th>
-            <th>vCPU</th>
-            <th>RAM</th>
-            <th>Storage</th>
-            <th>Channel</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VPS-1</td>
-            <td>1x Ryzen 9 9950X</td>
-            <td>2GB DDR5</td>
-            <td>30 GB SSD</td>
-            <td>10 Gbps</td>
-            <td>6.99 $/mo.</td>
-            <td><a class="btn-order" href="https://my.akenai.host">Order</a></td>
-          </tr>
-          <tr>
-            <td>VPS-2</td>
-            <td>2x Ryzen 9 9950X</td>
-            <td>4GB DDR5</td>
-            <td>60 GB SSD</td>
-            <td>10 Gbps</td>
-            <td>12.99 $/mo.</td>
-            <td><a class="btn-order" href="https://my.akenai.host">Order</a></td>
-          </tr>
-          <tr>
-            <td>VPS-3</td>
-            <td>4x Ryzen 9 9950X</td>
-            <td>8GB DDR5</td>
-            <td>120 GB SSD</td>
-            <td>10 Gbps</td>
-            <td>25.99 $/mo.</td>
-            <td><a class="btn-order" href="https://my.akenai.host">Order</a></td>
-          </tr>
-          <tr>
-            <td>VPS-4</td>
-            <td>8x Ryzen 9 9950X</td>
-            <td>16GB DDR5</td>
-            <td>240 GB SSD</td>
-            <td>10 Gbps</td>
-            <td>49.99 $/mo.</td>
-            <td><a class="btn-order" href="https://my.akenai.host">Order</a></td>
-          </tr>
-          <tr>
-            <td>VPS-5</td>
-            <td>16x Ryzen 9 9950X</td>
-            <td>32GB DDR5</td>
-            <td>480 GB SSD</td>
-            <td>10 Gbps</td>
-            <td>94.99 $/mo.</td>
-            <td><a class="btn-order" href="https://my.akenai.host">Order</a></td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </section>
-
-    <!-- JOIN US NOW -->
-    <section class="join">
-      <div class="join-glow"></div>
-      <h2 class="join-title">Join us now!</h2>
-      <p class="join-sub">Our support will always help you in solving any issues with your services.</p>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer" id="contacts">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <svg class="brand-logo" width="64" height="48" viewBox="0 0 96 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M79.6643 57.7342H96L73.3986 34.909L91.5245 17.2308H74.965L57.0629 35.3567L79.6643 57.7342Z" fill="white"/>
-            <path d="M57.2868 71.832L29.7622 44.0841L16.3357 57.2868H0L57.2868 0V71.832ZM37.8181 35.8041L45.6502 43.6364V28.4197L37.8181 35.8041Z" fill="white"/>
-          </svg>
-          <p class="footer-name">Akenai Hosting</p>
-          <p class="footer-desc">Your access to reliable and high-performance hosting. Deploy websites, applications, and online services on modern infrastructure with fast performance, stable uptime, and technical support.</p>
-          <p class="footer-copy">© Akenai Hosting 2026</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <p class="footer-col-heading">Community</p>
-            <a class="pill pill-tg" href="https://t.me/akenai_hosting">Telegram channel</a>
-            <a class="pill pill-tg" href="https://t.me/akenai_support">Support in telegram</a>
-          </div>
-          <div class="footer-col">
-            <p class="footer-col-heading">Legal</p>
-            <a class="pill" href="legal/terms.html">Terms of Service</a>
-            <a class="pill" href="legal/privacy.html">Privacy Policy</a>
-            <a class="pill" href="legal/aup.html">Acceptable Use Policy</a>
-            <a class="pill" href="legal/recurring.html">Recurring Payments</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </main>
+function TDTweaks() {
+  const [t, setTweak] = useTweaks(TD_TWEAK_DEFAULTS);
+  React.useEffect(() => {
+    if (window.applyTweaks) {
+      window.applyTweaks({
+        accent: TD_ACCENT_KEY[t.accent] || "mono",
+        hero: TD_HERO_KEY[t.hero] || "network"
+      });
+    }
+  }, [t.accent, t.hero]);
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Акцентный цвет" />
+      <TweakColor label="Accent" value={t.accent}
+        options={["#F0F0F0", "#AEB6C2", "#E8B84B"]}
+        onChange={(v) => setTweak("accent", v)} />
+      <TweakSection label="Фон в hero" />
+      <TweakRadio label="Режим" value={t.hero}
+        options={["Частицы", "Сетка", "Свечение"]}
+        onChange={(v) => setTweak("hero", v)} />
+    </TweaksPanel>
+  );
+}
+ReactDOM.createRoot(document.getElementById("tweaks-root")).render(<TDTweaks />);
+</script>
 </body>
 </html>
