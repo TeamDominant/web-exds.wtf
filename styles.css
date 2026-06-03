@@ -185,7 +185,8 @@ img { max-width: 100%; display: block; }
 }
 .nav-links a:hover { color: var(--text); background: var(--surface); }
 
-.nav-tools { display: flex; align-items: center; gap: 12px; }
+.nav-tools { display: flex; align-items: center; gap: 10px; }
+.btn-signin { padding: 10px 18px; font-size: 14px; }
 
 .lang {
   display: inline-flex;
@@ -710,6 +711,13 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: 1fr; }
   .hero-trust { gap: 14px 22px; }
   .footer-cols { gap: 32px; }
+  .period {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: var(--radius);
+    width: 100%;
+  }
+  .period button { justify-content: center; border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13.5px; }
 }
 
 /* tweaks panel mount stays above everything */
