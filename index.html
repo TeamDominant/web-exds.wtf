@@ -4,10 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TeamDominant — VPN & Proxy</title>
-<meta name="description" content="TeamDominant — быстрый VPN и прокси без логов. 50+ локаций, поддержка 24/7, работает на всех устройствах." />
+<meta name="description" content="TeamDominant — быстрый VPN и прокси без логов, поддержка 24/7, работает на всех устройствах." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Bad+Script&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="assets/AVATAR.svg" />
+<link rel="icon" type="image/png" href="assets/AVATAR.png" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -16,7 +18,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">
-      <span class="mark">TD</span>
+      <img class="mark" src="assets/EX.svg" alt="EX" />
       <span>Team<b>Dominant</b></span>
     </a>
     <nav class="nav-links">
@@ -38,15 +40,12 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <canvas id="hero-canvas"></canvas>
+  <div class="hero-paths" aria-hidden="true"></div>
   <div class="hero-glow"></div>
   <div class="hero-vignette"></div>
-  <div class="wrap">
-    <h1>
-      <span data-en="Your connection,">Твоё соединение —</span>
-      <span class="accent handwrite" data-en="under your control.">под твоим контролем.</span>
-    </h1>
-    <p class="hero-slogan">It's time to Dominate, isn't it?</p>
+  <div class="wrap hero-center">
+    <h1 class="hero-name">Team<span class="accent">Dominant</span></h1>
+    <p class="hero-sign">It's time to Dominate, isn't it?</p>
     <div class="hero-cta">
       <a href="#pricing" class="btn btn-primary btn-lg" data-en="Choose a plan">Выбрать тариф <span class="arr">→</span></a>
       <a href="#features" class="btn btn-ghost btn-lg" data-en="How it works">Как это работает</a>
@@ -241,24 +240,22 @@
 <script src="app.js"></script>
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" data-presets="react">
-/* TeamDominant — Tweaks: accent color + hero background mode */
+/* TeamDominant — Tweaks: accent color + hero paths toggle */
 const TD_TWEAK_DEFAULTS = {
   "accent": "#F0F0F0",
-  "hero": "Частицы"
+  "paths": true
 };
 const TD_ACCENT_KEY = { "#F0F0F0": "mono", "#AEB6C2": "steel", "#E8B84B": "gold" };
-const TD_HERO_KEY = { "Частицы": "network", "Сетка": "grid", "Свечение": "glow" };
 
 function TDTweaks() {
   const [t, setTweak] = useTweaks(TD_TWEAK_DEFAULTS);
   React.useEffect(() => {
     if (window.applyTweaks) {
-      window.applyTweaks({
-        accent: TD_ACCENT_KEY[t.accent] || "mono",
-        hero: TD_HERO_KEY[t.hero] || "network"
-      });
+      window.applyTweaks({ accent: TD_ACCENT_KEY[t.accent] || "mono" });
     }
-  }, [t.accent, t.hero]);
+    const host = document.querySelector(".hero-paths");
+    if (host) host.style.display = t.paths ? "" : "none";
+  }, [t.accent, t.paths]);
   return (
     <TweaksPanel title="Tweaks">
       <TweakSection label="Акцентный цвет" />
@@ -266,9 +263,8 @@ function TDTweaks() {
         options={["#F0F0F0", "#AEB6C2", "#E8B84B"]}
         onChange={(v) => setTweak("accent", v)} />
       <TweakSection label="Фон в hero" />
-      <TweakRadio label="Режим" value={t.hero}
-        options={["Частицы", "Сетка", "Свечение"]}
-        onChange={(v) => setTweak("hero", v)} />
+      <TweakToggle label="Линии" value={t.paths}
+        onChange={(v) => setTweak("paths", v)} />
     </TweaksPanel>
   );
 }

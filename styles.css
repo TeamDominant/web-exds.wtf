@@ -164,14 +164,9 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.02em;
 }
 .brand .mark {
-  width: 30px; height: 30px;
-  border-radius: 8px;
-  display: grid; place-items: center;
-  background: #1e1e1e;
-  color: #ffffff;
-  border: 1px solid var(--border-strong);
-  font-weight: 700;
-  font-size: 16px;
+  height: 24px;
+  width: auto;
+  display: block;
 }
 .brand b { color: var(--text); font-weight: 600; }
 
@@ -244,12 +239,34 @@ img { max-width: 100%; display: block; }
   padding-top: 72px;
   overflow: hidden;
 }
-#hero-canvas {
+#hero-canvas, .hero-paths {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
   z-index: 0;
 }
+.hero-paths {
+  color: var(--accent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+  will-change: transform;
+}
+.hero-paths.in { opacity: 1; }
+.hero-paths svg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.hero-paths path {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 0.55 0.45;
+  animation: path-flow var(--dur, 24s) linear var(--delay, 0s) infinite;
+  opacity: var(--op, 0.4);
+  stroke-width: var(--sw, 1);
+}
+@keyframes path-flow { to { stroke-dashoffset: -1; } }
 .hero-glow {
   position: absolute;
   z-index: 0;
@@ -294,61 +311,39 @@ img { max-width: 100%; display: block; }
 }
 @keyframes pulse { 50% { box-shadow: 0 0 0 7px transparent; } }
 
-.hero h1 {
-  font-size: clamp(42px, 7.4vw, 92px);
-  margin-top: 26px;
-  max-width: 14ch;
+.hero-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.hero h1 .accent { color: var(--accent); }
-.hero h1 > span:first-child { display: block; }
-.hero h1 .accent.handwrite {
-  font-family: "Bad Script", cursive;
-  font-weight: 400;
-  display: inline-block;
-  font-size: 1.12em;
-  line-height: 1.1;
-  letter-spacing: 0;
-  margin-top: 0.06em;
-  -webkit-mask-image: linear-gradient(to right, #000 0 55%, transparent 78%);
-  mask-image: linear-gradient(to right, #000 0 55%, transparent 78%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 300% 100%;
-  mask-size: 300% 100%;
-  -webkit-mask-position: 100% 0;
-  mask-position: 100% 0;
-  transition: -webkit-mask-position 1.9s var(--ease) .3s, mask-position 1.9s var(--ease) .3s;
+
+/* big name — smooth fade up */
+.hero-name {
+  font-size: clamp(46px, 11vw, 148px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-rise 1s var(--ease) .1s forwards;
 }
-.hero h1 .accent.handwrite.in {
-  -webkit-mask-position: 0 0;
-  mask-position: 0 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero h1 .accent.handwrite { -webkit-mask-image: none; mask-image: none; }
-}
-.hero-slogan {
+.hero-name .accent { color: var(--accent); }
+@keyframes hero-rise { to { opacity: 1; transform: none; } }
+
+/* slogan — clean mono, smooth fade up */
+.hero-sign {
   font-family: var(--font-mono);
-  color: var(--accent);
-  font-size: clamp(14px, 2vw, 17px);
-  letter-spacing: 0.02em;
-  margin-top: 22px;
-}
-.hero-sub {
   color: var(--muted);
-  font-size: clamp(17px, 2.1vw, 20px);
-  max-width: 52ch;
-  margin-top: 18px;
+  font-size: clamp(15px, 2.1vw, 22px);
+  letter-spacing: 0.04em;
+  margin-top: clamp(16px, 2vw, 26px);
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-rise 1s var(--ease) .35s forwards;
 }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
-.hero-trust {
-  display: flex; flex-wrap: wrap;
-  gap: 22px 32px;
-  margin-top: 44px;
-  font-size: 14px;
-  color: var(--faint);
-}
-.hero-trust span { display: inline-flex; align-items: center; gap: 9px; }
-.hero-trust .tick { color: var(--accent); font-family: var(--font-mono); }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: clamp(30px, 4vw, 46px); justify-content: center; }
 
 .scroll-hint {
   position: absolute;
