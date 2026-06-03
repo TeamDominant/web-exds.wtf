@@ -40,7 +40,6 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="hero-paths" aria-hidden="true"></div>
   <div class="hero-glow"></div>
   <div class="hero-vignette"></div>
   <div class="wrap hero-center">
@@ -243,7 +242,6 @@
 /* TeamDominant — Tweaks: accent color + hero paths toggle */
 const TD_TWEAK_DEFAULTS = {
   "accent": "#F0F0F0",
-  "paths": true
 };
 const TD_ACCENT_KEY = { "#F0F0F0": "mono", "#AEB6C2": "steel", "#E8B84B": "gold" };
 
@@ -253,18 +251,13 @@ function TDTweaks() {
     if (window.applyTweaks) {
       window.applyTweaks({ accent: TD_ACCENT_KEY[t.accent] || "mono" });
     }
-    const host = document.querySelector(".hero-paths");
-    if (host) host.style.display = t.paths ? "" : "none";
-  }, [t.accent, t.paths]);
+  }, [t.accent]);
   return (
     <TweaksPanel title="Tweaks">
       <TweakSection label="Акцентный цвет" />
       <TweakColor label="Accent" value={t.accent}
         options={["#F0F0F0", "#AEB6C2", "#E8B84B"]}
         onChange={(v) => setTweak("accent", v)} />
-      <TweakSection label="Фон в hero" />
-      <TweakToggle label="Линии" value={t.paths}
-        onChange={(v) => setTweak("paths", v)} />
     </TweaksPanel>
   );
 }

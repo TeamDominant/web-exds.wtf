@@ -239,34 +239,6 @@ img { max-width: 100%; display: block; }
   padding-top: 72px;
   overflow: hidden;
 }
-#hero-canvas, .hero-paths {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-}
-.hero-paths {
-  color: var(--accent);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1.6s ease;
-  will-change: transform;
-}
-.hero-paths.in { opacity: 1; }
-.hero-paths svg {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-}
-.hero-paths path {
-  fill: none;
-  stroke: currentColor;
-  stroke-dasharray: 0.55 0.45;
-  animation: path-flow var(--dur, 24s) linear var(--delay, 0s) infinite;
-  opacity: var(--op, 0.4);
-  stroke-width: var(--sw, 1);
-}
-@keyframes path-flow { to { stroke-dashoffset: -1; } }
 .hero-glow {
   position: absolute;
   z-index: 0;
