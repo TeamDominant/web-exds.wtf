@@ -61,11 +61,11 @@
       window.addEventListener("scroll", onScroll, { passive: true });
     }
     var burger = document.querySelector(".burger");
-    var links = document.querySelector(".nav-links");
-    if (burger && links) {
-      burger.addEventListener("click", function () { links.classList.toggle("open"); });
-      links.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () { links.classList.remove("open"); });
+    var menu = document.querySelector(".nav-menu");
+    if (burger && menu) {
+      burger.addEventListener("click", function () { menu.classList.toggle("open"); });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { menu.classList.remove("open"); });
       });
     }
     document.querySelectorAll(".lang button").forEach(function (b) {
