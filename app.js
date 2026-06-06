@@ -40,6 +40,10 @@
       if (!el.hasAttribute("data-ru")) el.setAttribute("data-ru", el.textContent);
       el.textContent = l === "en" ? el.getAttribute("data-en") : el.getAttribute("data-ru");
     });
+    document.querySelectorAll("[data-en-html]").forEach(function (el) {
+      if (!el.hasAttribute("data-ru-html")) el.setAttribute("data-ru-html", el.innerHTML);
+      el.innerHTML = l === "en" ? el.getAttribute("data-en-html") : el.getAttribute("data-ru-html");
+    });
     document.querySelectorAll("[data-en-ph]").forEach(function (el) {
       if (!el.hasAttribute("data-ru-ph")) el.setAttribute("data-ru-ph", el.getAttribute("placeholder") || "");
       el.setAttribute("placeholder", l === "en" ? el.getAttribute("data-en-ph") : el.getAttribute("data-ru-ph"));
@@ -61,11 +65,11 @@
       window.addEventListener("scroll", onScroll, { passive: true });
     }
     var burger = document.querySelector(".burger");
-    var menu = document.querySelector(".nav-menu");
-    if (burger && menu) {
-      burger.addEventListener("click", function () { menu.classList.toggle("open"); });
-      menu.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () { menu.classList.remove("open"); });
+    var links = document.querySelector(".nav-links");
+    if (burger && links) {
+      burger.addEventListener("click", function () { links.classList.toggle("open"); });
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { links.classList.remove("open"); });
       });
     }
     document.querySelectorAll(".lang button").forEach(function (b) {
@@ -110,7 +114,7 @@
     max:   { 1: 600, 3: 1600, 6: 2970, 12: 5400 }
   };
   var SAVE = { 1: 0, 3: 11, 6: 17, 12: 25 };
-  var period = 12;
+  var period = 1;
 
   function fmt(n) { return n.toLocaleString(lang === "en" ? "en-US" : "ru-RU"); }
 
@@ -253,6 +257,41 @@
     });
   }
 
+  /* ---------- hero: flowing background paths (kokonut-style) ---------- */
+  function initHeroPaths() {
+    var host = document.querySelector(".hero-paths");
+    if (!host) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var svgNS = "http://www.w3.org/2000/svg";
+
+    function layer(dir) {
+      var svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 696 316");
+      svg.setAttribute("fill", "none");
+      svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+      for (var i = 0; i < 36; i++) {
+        var p = document.createElementNS(svgNS, "path");
+        var d =
+          "M" + (-380 - i * 5 * dir) + " " + (-189 + i * 6 * dir) +
+          "C" + (-380 - i * 5 * dir) + " " + (-189 + i * 6 * dir) +
+          " " + (-312 - i * 5 * dir) + " " + (216 - i * 6 * dir) +
+          " " + (152 - i * 5 * dir) + " " + (343 - i * 6 * dir) +
+          "C" + (616 - i * 5 * dir) + " " + (470 - i * 6 * dir) +
+          " " + (684 - i * 5 * dir) + " " + (875 - i * 6 * dir) +
+          " " + (684 - i * 5 * dir) + " " + (875 - i * 6 * dir);
+        p.setAttribute("d", d);
+        p.setAttribute("pathLength", "1");
+        p.style.setProperty("--sw", (0.5 + i * 0.035).toFixed(2) + "px");
+        p.style.setProperty("--op", (0.10 + i * 0.012).toFixed(3));
+        p.style.setProperty("--dur", (16 + Math.random() * 14).toFixed(1) + "s");
+        p.style.setProperty("--delay", (-Math.random() * 16).toFixed(1) + "s");
+        svg.appendChild(p);
+      }
+      return svg;
+    }
+    host.appendChild(layer(1));
+    host.appendChild(layer(-1));
+  }
 
   /* ---------- hero: split name into animated letters ---------- */
   function initHeroName() {
@@ -285,13 +324,17 @@
   function initHeroScroll() {
     var hero = document.querySelector(".hero");
     if (!hero) return;
+    var paths = hero.querySelector(".hero-paths");
     var content = hero.querySelector(".hero-center");
     var glow = hero.querySelector(".hero-glow");
+    if (paths) requestAnimationFrame(function () { paths.classList.add("in"); });
     var ticking = false;
     function update() {
       ticking = false;
       var h = hero.offsetHeight || 1;
       var p = Math.min(Math.max(window.scrollY / h, 0), 1);
+      if (paths) paths.style.transform =
+        "translateY(" + (p * -14) + "%) scale(" + (1 + p * 0.18) + ") rotate(" + (p * 5) + "deg)";
       if (content) {
         content.style.transform = "translateY(" + (p * 60) + "px)";
         content.style.opacity = String(Math.max(0, 1 - p * 1.25));
@@ -333,6 +376,7 @@
     initPricing();
     initGlow();
     initHero();
+    initHeroPaths();
     initHeroScroll();
     initHandwrite();
     initYear();
