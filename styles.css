@@ -140,8 +140,10 @@ img { max-width: 100%; display: block; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
+  background: oklch(0.17 0 0 / 0.78);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--border);
   transition: background .3s var(--ease), border-color .3s var(--ease), backdrop-filter .3s;
-  border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
   background: oklch(0.17 0 0 / 0.78);
@@ -166,12 +168,8 @@ img { max-width: 100%; display: block; }
 .brand .mark {
   width: 30px; height: 30px;
   border-radius: 8px;
-  display: grid; place-items: center;
-  background: #1e1e1e;
-  color: #ffffff;
+  display: block;
   border: 1px solid var(--border-strong);
-  font-weight: 700;
-  font-size: 16px;
 }
 .brand b { color: var(--text); font-weight: 600; }
 
