@@ -444,6 +444,22 @@ body[data-dir="map"] .cd-hero { min-height: 100svh; }
   font-family: var(--font-mono); font-size: 10.5px; color: var(--faint);
 }
 image-slot { display: block; width: 100%; }
+.cd-ph {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background:
+    repeating-linear-gradient(45deg, var(--surface) 0 11px, var(--surface-2) 11px 22px);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 18px;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .cd-shot-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
 
 /* ============================================================
@@ -515,7 +531,7 @@ image-slot { display: block; width: 100%; }
 }
 .cmp-logo.td { background: var(--accent); color: var(--accent-ink); border: none;
   font-family: var(--font-display); font-weight: 700; font-size: 16px; }
-.cmp-logo image-slot { width: 100%; height: 100%; filter: blur(2.4px) saturate(1.2); }
+.cmp-logo image-slot { width: 100%; height: 100%; }
 /* competitor color tints so the brand is roughly recognizable */
 .cmp-logo.tint-red    { box-shadow: 0 0 0 2px oklch(0.6 0.16 25 / 0.55);  background: oklch(0.4 0.1 25 / 0.4); }
 .cmp-logo.tint-blue   { box-shadow: 0 0 0 2px oklch(0.6 0.13 255 / 0.55); background: oklch(0.4 0.09 255 / 0.4); }

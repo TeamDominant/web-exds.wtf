@@ -4,14 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TeamDominant</title>
-<link rel="icon" type="image/svg+xml" href="assets/AVATAR.svg" />
-<link rel="icon" type="image/png" href="assets/AVATAR.png" />
-<meta name="description" content="TeamDominant — стабильное подключение и качественная сеть. Без логов, на всех устройствах." />
+<meta name="description" content="TeamDominant — современный сервис защищённого соединения: Множество качественных локаций, без логов, на всех устройствах." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Archivo:wght@500;600;700&family=Sora:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="stylesd.css" />
+<link rel="stylesheet" href="controld.css" />
 </head>
 <body data-dir="map">
 
@@ -21,23 +19,28 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">
-      <img class="mark" src="assets/AVATAR.svg" alt="TD" width="32" height="32" />
+      <span class="mark">TD</span>
       <span>Team<b>Dominant</b></span>
     </a>
-    <nav class="nav-links">
-      <a href="#features" data-en="Features">Возможности</a>
-      <a href="#compare" data-en="Compare">Сравнение</a>
-      <a href="#pricing" data-en="Pricing">Тарифы</a>
-      <a href="#contact" data-en="Contacts">Контакты</a>
-      <a href="faq.html" data-en="FAQ">FAQ</a>
-    </nav>
-    <div class="nav-tools">
-      <div class="lang" role="group" aria-label="Language">
-        <button data-lang="ru" class="on">RU</button>
-        <button data-lang="en">EN</button>
+    <button class="burger" aria-label="Меню" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+      <span data-en="Menu">Меню</span>
+    </button>
+    <div class="nav-collapse" id="nav-collapse">
+      <nav class="nav-links">
+        <a href="#features" data-en="Features">Возможности</a>
+        <a href="#compare" data-en="Compare">Сравнение</a>
+        <a href="#pricing" data-en="Pricing">Тарифы</a>
+        <a href="#contact" data-en="Contacts">Контакты</a>
+        <a href="faq.html" data-en="FAQ">FAQ</a>
+      </nav>
+      <div class="nav-tools">
+        <div class="lang" role="group" aria-label="Language">
+          <button data-lang="ru" class="on">RU</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <a href="#pricing" class="btn btn-primary" data-en="Get started">Подключить</a>
       </div>
-      <a href="#pricing" class="btn btn-primary" data-en="Get started">Подключить</a>
-      <button class="burger" aria-label="Menu"><span></span></button>
     </div>
   </div>
 </header>
@@ -52,16 +55,78 @@
       <!-- copy -->
       <div class="cd-copy">
         <h1 class="cd-h1" data-en-html="Protect, accelerate and <span class='accent'>control</span> your connection.">Защити, ускорь и <span class="accent">контролируй</span> своё соединение.</h1>
-        <p class="cd-sub" data-en="TeamDominant protects your privacy and speeds up the network — on every device. Onboard in minutes and forget about it.">TeamDominant защищает приватность и ускоряет сеть. На всех устройствах. Подключение за пару минут — и можно забыть.</p>
+        <p class="cd-sub" data-en="TeamDominant is a modern secure-connection service that encrypts your traffic, protects your privacy and speeds up the network — on every device. Onboard in minutes and forget about it.">TeamDominant — современный сервис защищённого соединения: шифрует трафик, защищает приватность и ускоряет сеть. На всех устройствах. Подключение за пару минут — и можно забыть.</p>
         <div class="cd-actions">
-          <a href="#pricing" class="btn btn-primary btn-lg" data-en="Start now">Подключить</a>
+          <a href="#pricing" class="btn btn-primary btn-lg" data-en="Start now">Подключить <span class="arr">→</span></a>
           <a href="#how" class="btn btn-ghost btn-lg" data-en="How it works">Как это работает</a>
         </div>
         <ul class="cd-checklist">
           <li><span class="cd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg></span><span data-en="Channels up to 10 Gbit/s with a strict no-logs policy">Каналы до 10 Гбит/с и строгая политика без логов</span></li>
-          <li><span class="cd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg></span><span data-en="Stable, fast access to the services you need worldwide">Стабильный быстрый доступ к нужным сервисам по всему миру</span></li>
+          <li><span class="cd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg></span><span data-en="Stable, fast connection anywhere in the world">Стабильное и быстрое соединение в любой точке мира</span></li>
           <li><span class="cd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg></span><span data-en="One account — every device, no limits">Один аккаунт — все устройства, без лимитов</span></li>
         </ul>
+      </div>
+
+      <!-- product mockup panel -->
+      <div class="cd-panel-wrap reveal">
+        <div class="cd-panel" aria-hidden="true">
+          <div class="cd-rail">
+            <div class="logo">TD</div>
+            <button class="on" title="Status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z" stroke-linejoin="round"/></svg></button>
+            <button title="Servers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></button>
+            <button title="Stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></button>
+            <button title="Devices"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="14" height="9" rx="2"/><path d="M3 17h18M16 9h4a1 1 0 0 1 1 1v8"/></svg></button>
+            <span class="sp"></span>
+            <button title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2l-.4-2.6h-4l-.4 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2l.4 2.6h4l.4-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6A7 7 0 0 0 19 12Z"/></svg></button>
+          </div>
+          <div class="cd-content">
+            <div class="cd-content-head">
+              <h4 data-en="Connection">Соединение</h4>
+              <span class="cd-status-pill"><i></i><span data-en="Protected · WireGuard">Защищено · WireGuard</span></span>
+            </div>
+
+            <div class="cd-conn">
+              <div class="loc">
+                <span class="flag">NL</span>
+                <div>
+                  <div class="city">Амстердам</div>
+                  <div class="sub">ams-03.td · 1.4 ms</div>
+                </div>
+              </div>
+              <div class="speed"><b><span data-speed data-base="9.4">9.4</span></b><span data-en="Gbit/s · down">Гбит/с · приём</span></div>
+            </div>
+
+            <div class="cd-spark" aria-hidden="true"></div>
+
+            <div class="cd-list">
+              <div class="cd-list-label" data-en="Fastest servers">Быстрые серверы</div>
+              <div class="cd-row active" data-flag="NL" data-city="Амстердам" data-host="ams-03.td · 1.4 ms" data-base="9.4">
+                <span class="rflag">NL</span>
+                <div class="rname"><b>Амстердам</b><span>ams-03.td</span></div>
+                <div class="cd-load"><i style="width:34%"></i></div>
+                <div class="cd-ping"><b>14</b> ms</div>
+              </div>
+              <div class="cd-row" data-flag="DE" data-city="Франкфурт" data-host="fra-01.td · 2.1 ms" data-base="8.7">
+                <span class="rflag">DE</span>
+                <div class="rname"><b>Франкфурт</b><span>fra-01.td</span></div>
+                <div class="cd-load"><i style="width:52%"></i></div>
+                <div class="cd-ping"><b>21</b> ms</div>
+              </div>
+              <div class="cd-row" data-flag="US" data-city="Нью-Йорк" data-host="nyc-02.td · 5.8 ms" data-base="7.9">
+                <span class="rflag">US</span>
+                <div class="rname"><b>Нью-Йорк</b><span>nyc-02.td</span></div>
+                <div class="cd-load"><i style="width:61%"></i></div>
+                <div class="cd-ping"><b>58</b> ms</div>
+              </div>
+              <div class="cd-row" data-flag="JP" data-city="Токио" data-host="tyo-01.td · 9.2 ms" data-base="7.1">
+                <span class="rflag">JP</span>
+                <div class="rname"><b>Токио</b><span>tyo-01.td</span></div>
+                <div class="cd-load"><i style="width:44%"></i></div>
+                <div class="cd-ping"><b>92</b> ms</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +153,7 @@
     <div class="section-head reveal">
       <span class="kicker" data-en="Capabilities">Возможности</span>
       <h2 data-en="Built for speed, privacy and zero hassle">Сделано для скорости, приватности и спокойствия</h2>
-      <p data-en="Everything you need to browse freely — without logs or limits.">Всё, что нужно для свободного доступа в сеть — без логов и лимитов.</p>
+      <p data-en="Everything you need for a fast, private connection — without slowdowns, logs or limits.">Всё для быстрого и приватного соединения — без замедлений, логов и лимитов.</p>
     </div>
 
     <div class="cd-bento">
@@ -96,13 +161,13 @@
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke-linejoin="round"/></svg></div>
         <h3 data-en="Speed without compromise">Скорость без компромиссов</h3>
         <p data-en="Servers from 1 to 10 Gbit/s and only vetted data centers. We don't store history or watch your traffic.">Серверы от 1 до 10 Гбит/с и только проверенные дата-центры. Мы не храним историю и не следим за трафиком.</p>
-        <div class="cd-metric" style="margin-top:28px;"><span class="big">10</span><span class="u"> Гбит/с</span></div>
+        <div class="cd-metric" style="margin-top:28px;"><span class="big">10</span><span class="u" data-en=" Gbit/s"> Гбит/с</span></div>
       </article>
 
       <article class="cd-cell third glow-card reveal d1">
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3Z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3 data-en="Privacy by default">Приватность по умолчанию</h3>
-        <p data-en="Modern and time-tested methods with no leaks.">Современные и проверенные подходы без утечек.</p>
+        <p data-en="Modern, audited protocols with no leaks.">Современные протоколы без утечек.</p>
       </article>
 
       <article class="cd-cell third glow-card reveal d2">
@@ -113,14 +178,14 @@
 
       <article class="cd-cell half glow-card reveal">
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9Z"/></svg></div>
-        <h3 data-en="Multiple locations worldwide">Множество локаций по миру</h3>
+        <h3 data-en="Many quality locations">Множество качественных локаций</h3>
         <p data-en="Quality over quantity — vetted nodes chosen for speed and stability, not just a long list.">Качество, а не количество — узлы выбраны за скорость и стабильность, а не ради длинного списка.</p>
       </article>
 
       <article class="cd-cell half glow-card reveal d1">
         <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <h3 data-en="Live support">Живая поддержка</h3>
-        <p data-en="Real people in chat, fast answers and setup help.">Живые люди в чате, быстрые ответы и помощь с настройкой.</p>
+        <h3 data-en="24/7 live support">Живая поддержка 24/7</h3>
+        <p data-en="Real people in chat, fast answers and setup help whenever you need it.">Живые люди в чате, быстрые ответы и помощь с настройкой в любое время.</p>
       </article>
     </div>
   </div>
@@ -136,13 +201,13 @@
     </div>
     <div class="cd-showcase-grid">
       <div class="cd-shot-frame reveal">
-        <div class="cd-shot-bar"><i></i><i></i><i></i><span class="url" data-en="app.teamdominant.io">infra.dominants.link</span></div>
-        <image-slot id="shot-main" style="aspect-ratio: 16/10;" shape="rounded" radius="10" placeholder="Скриншот дашборда — перетащите сюда"></image-slot>
+        <div class="cd-shot-bar"><i></i><i></i><i></i><span class="url" data-en="app.teamdominant.io">app.teamdominant.io</span></div>
+        <div class="cd-ph" style="aspect-ratio: 16/10;" data-slot="shot-main"><span data-en="dashboard screenshot">скриншот дашборда</span></div>
       </div>
       <div>
         <div class="cd-shot-grid-2">
-          <div class="cd-shot-frame reveal d1"><image-slot id="shot-a" style="aspect-ratio: 4/5;" shape="rounded" radius="10" placeholder="Экран сервера"></image-slot></div>
-          <div class="cd-shot-frame reveal d2"><image-slot id="shot-b" style="aspect-ratio: 4/5;" shape="rounded" radius="10" placeholder="Экран статистики"></image-slot></div>
+          <div class="cd-shot-frame reveal d1"><div class="cd-ph" style="aspect-ratio: 4/5;" data-slot="shot-a"><span data-en="server screen">экран сервера</span></div></div>
+          <div class="cd-shot-frame reveal d2"><div class="cd-ph" style="aspect-ratio: 4/5;" data-slot="shot-b"><span data-en="stats screen">экран статистики</span></div></div>
         </div>
       </div>
     </div>
@@ -170,7 +235,7 @@
       <article class="cd-step glow-card reveal d2">
         <div class="n">3</div>
         <h3 data-en="Connect & dominate">Подключайся и доминируй</h3>
-        <p data-en="Tap connect and pick the fastest server.">Жми «Подключить» и выбирай самый быстрый сервер.</p>
+        <p data-en="Tap connect, pick the fastest server and forget about slowdowns and drops.">Жми «Подключить», выбирай самый быстрый сервер и забудь о тормозах и обрывах.</p>
       </article>
     </div>
   </div>
@@ -182,7 +247,7 @@
     <div class="section-head reveal">
       <span class="kicker" data-en="Comparison">Сравнение</span>
       <h2 data-en="What we have — and others don't">Что есть у нас — и нет у других</h2>
-      <p data-en="Tap any row to see the details. Logos are blurred on purpose — drop your own.">Нажми на строку, чтобы раскрыть детали.</p>
+      <p data-en="Tap any row to see the details.">Нажми на строку, чтобы раскрыть детали.</p>
     </div>
 
     <div class="cmp-legend reveal">
@@ -202,32 +267,32 @@
             <span class="tagline" data-en="that's us">это мы</span>
           </div>
           <div class="cmp-prov">
-            <span class="cmp-logo tint-red"><image-slot id="cmp-zapret" placeholder="Z"></image-slot></span>
-            <b>Z*pret</b>
+            <span class="cmp-logo tint-red"><span class="ph">Z</span></span>
+            <b>Zapret</b>
             <span class="tagline" data-en="open-source tool">опенсорс-утилита</span>
           </div>
           <div class="cmp-prov">
-            <span class="cmp-logo tint-blue"><image-slot id="cmp-uv" placeholder="ДВ"></image-slot></span>
-            <b>Дядя Виталя</b>
-            <span class="tagline" data-en="Telegram bot">какой-то Telegram-бот</span>
+            <span class="cmp-logo tint-blue"><span class="ph">ДВ</span></span>
+            <b>Дядя Ваня</b>
+            <span class="tagline" data-en="Telegram bot">Telegram-бот</span>
           </div>
           <div class="cmp-prov">
-            <span class="cmp-logo tint-green"><image-slot id="cmp-main" placeholder="VPN"></image-slot></span>
-            <b data-en="Mainstream VPN">Масс-маркеты</b>
-            <span class="tagline" data-en="big brand">крупные бренды</span>
+            <span class="cmp-logo tint-green"><span class="ph">MS</span></span>
+            <b data-en="Mainstream service">Масс-маркет сервис</b>
+            <span class="tagline" data-en="big brand">крупный бренд</span>
           </div>
         </div>
 
         <!-- rows -->
         <div class="cmp-row open">
           <button class="cmp-rowhead">
-            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Smart routing — no need to toggle the VPN">Умный роутинг — VPN можно не выключать</span></span>
+            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Smart routing — no need to toggle the connection">Умный роутинг — соединение можно не выключать</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
           </button>
-          <div class="cmp-detail"><div><p data-en="Traffic to local and domestic services goes direct, overseas services go through the VPN. No manual on/off — it just works in the background.">Трафик к локальным и российским сервисам идёт напрямую, а к зарубежным — через VPN. Не нужно вручную включать и выключать — всё работает в фоне.</p></div></div>
+          <div class="cmp-detail"><div><p data-en="Local traffic goes direct, the rest runs through the secure tunnel. No manual on/off — it just works in the background.">Локальный трафик идёт напрямую, остальной — через защищённый туннель. Не нужно вручную включать и выключать — всё работает в фоне.</p></div></div>
         </div>
 
         <div class="cmp-row">
@@ -235,7 +300,7 @@
             <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Stable channel, no race for server count">Стабильный канал, без гонки за количеством</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
           </button>
           <div class="cmp-detail"><div><p data-en="We don't pad the list with hundreds of dead servers. Every node holds its stated speed under load.">Мы не набиваем список сотнями мёртвых серверов. Каждый узел держит заявленную скорость даже под нагрузкой.</p></div></div>
@@ -245,8 +310,8 @@
           <button class="cmp-rowhead">
             <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Unlimited traffic">Безлимитный трафик</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
           </button>
           <div class="cmp-detail"><div><p data-en="No gigabyte caps and no throttling after a threshold — use as much as you need.">Никаких лимитов по гигабайтам и троттлинга после порога — пользуйся сколько нужно.</p></div></div>
@@ -254,13 +319,13 @@
 
         <div class="cmp-row">
           <button class="cmp-rowhead">
-            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Several devices per plan and fair pricing">Несколько устройств в подписке и выгодные тарифы</span></span>
+            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Several devices per plan + fair pricing">Несколько устройств в подписке + выгодные тарифы</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
           </button>
-          <div class="cmp-detail"><div><p data-en="Up to 10 devices on one account, and the monthly price drops the longer your term.">До 10 устройств на один аккаунт, а цена за месяц ниже при длинном сроке подписки. Некоторые провайдеры просят платить за каждое устройство как за отдельную подписку, т.е. затраты в два раза больше.</p></div></div>
+          <div class="cmp-detail"><div><p data-en="Up to 10 devices on one account, and the monthly price drops the longer your term.">До 10 устройств на один аккаунт, а цена за месяц ниже при длинном сроке подписки.</p></div></div>
         </div>
 
         <div class="cmp-row">
@@ -276,21 +341,21 @@
 
         <div class="cmp-row">
           <button class="cmp-rowhead">
-            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Live support">Живая поддержка</span></span>
+            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Fast human support">Быстрая живая поддержка</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
           </button>
-          <div class="cmp-detail"><div><p data-en="Real people in chat — quick answers and help with setup.">Живые люди в чате — быстрые ответы и помощь с настройкой.</p></div></div>
+          <div class="cmp-detail"><div><p data-en="Real people in chat — quick answers and help with setup whenever you need it.">Живые люди в чате — быстрые ответы и помощь с настройкой в любое время.</p></div></div>
         </div>
 
         <div class="cmp-row">
           <button class="cmp-rowhead">
-            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Rapid response to incidents">Быстрое реагирование на проблемы</span></span>
+            <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Rapid response to incidents">Максимально быстрое реагирование на проблемы</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
           </button>
           <div class="cmp-detail"><div><p data-en="We monitor the network and fix outages in minutes, not days.">Мы мониторим сеть и устраняем сбои за считанные минуты, а не дни.</p></div></div>
@@ -311,9 +376,9 @@
           <button class="cmp-rowhead">
             <span class="cmp-feat"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg><span data-en="Promo codes, referral & partner programs">Промокоды, реферальная и партнёрская программы</span></span>
             <span class="cmp-cell cmp-col-td"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+            <span class="cmp-cell"><span class="cmp-mark" data-m="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
             <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="part"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 12h12"/></svg></span></span>
-            <span class="cmp-cell"><span class="cmp-mark" data-m="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 13 4 4L19 7"/></svg></span></span>
           </button>
           <div class="cmp-detail"><div><p data-en="Discounts via promo codes, rewards for invited friends and a partner program for teams.">Скидки по промокодам, награды за приглашённых друзей и партнёрская программа для команд.</p></div></div>
         </div>
@@ -327,7 +392,7 @@
 <section class="stats">
   <div class="stats-grid">
     <div class="stat reveal">
-      <div class="num"><span data-count="10">0</span><span class="u" style="font-size:0.42em; letter-spacing:0;"> Гбит/с</span></div>
+      <div class="num"><span data-count="10">0</span><span class="u" style="font-size:0.42em; letter-spacing:0;" data-en=" Gbit/s"> Гбит/с</span></div>
       <div class="lbl" data-en="on every channel">на каждом канале</div>
     </div>
     <div class="stat reveal d1">
@@ -366,14 +431,14 @@
     <div class="price-grid">
       <article class="price-card reveal" data-tier="start">
         <div class="tier"><span>Старт</span></div>
-        <div class="devices"><span data-en="For">Для</span> <b>3</b> <span data-en="device">устройств</span></div>
-        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="devices"><span data-en="For">Для</span> <b>1</b> <span data-en="device">устройства</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span><span class="old"></span></div>
         <div class="price-permonth"></div>
         <hr />
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="All 50+ locations">Все локации</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Many quality locations">Множество качественных локаций</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Unlimited traffic, no logs">Безлимитный трафик, без логов</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 3 devices once">Расширяется до 5 устройств</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Modern protocols">Современные протоколы</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Chat support">Поддержка в чате</span></li>
         </ul>
         <a href="#contact" class="btn btn-ghost" data-en="Choose Start">Выбрать «Старт»</a>
@@ -381,14 +446,14 @@
 
       <article class="price-card featured reveal d1" data-tier="plus">
         <div class="tier"><span>Плюс</span><span class="tag" data-en="Popular">Популярный</span></div>
-        <div class="devices"><span data-en="For">Для</span> <b>6</b> <span data-en="devices">устройств</span></div>
-        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="devices"><span data-en="For">Для</span> <b>5</b> <span data-en="devices">устройств</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span><span class="old"></span></div>
         <div class="price-permonth"></div>
         <hr />
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Everything in Start">Всё из «Старт»</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 5 devices at once">До 5 устройств одновременно</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Priority servers">Приоритетные серверы</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 5 devices at once">Расширяется до 9 устройств</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="24/7 support">Поддержка 24/7</span></li>
         </ul>
         <a href="#contact" class="btn btn-primary" data-en="Choose Plus">Выбрать «Плюс»</a>
@@ -397,13 +462,13 @@
       <article class="price-card reveal d2" data-tier="max">
         <div class="tier"><span>Максимум</span></div>
         <div class="devices"><span data-en="For">Для</span> <b>10</b> <span data-en="devices">устройств</span></div>
-        <div class="price-row"><span class="val">0</span><span class="cur">₽</span></div>
+        <div class="price-row"><span class="val">0</span><span class="cur">₽</span><span class="old"></span></div>
         <div class="price-permonth"></div>
         <hr />
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Everything in Plus">Всё из «Плюс»</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 10 devices">Расширяется до 15 устройств</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Dedicated server on request">Выделенный сервер по запросу</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Up to 10 devices">До 10 устройств</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Dedicated IP on request">Выделенный IP по запросу</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg><span data-en="Personal manager">Персональный менеджер</span></li>
         </ul>
         <a href="#contact" class="btn btn-ghost" data-en="Choose Maximum">Выбрать «Максимум»</a>
@@ -423,7 +488,7 @@
         <a href="#pricing" class="btn btn-primary btn-lg" data-en="Choose a plan">Выбрать тариф <span class="arr">→</span></a>
         <div class="contact-links">
           <a href="#" class="contact-chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.8 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L7 13 2.4 11.5c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.6.2 1.3 1.6Z"/></svg>Telegram</a>
-          <a href="#" class="contact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>support@dominants.link</a>
+          <a href="#" class="contact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>support@teamdominant.io</a>
         </div>
       </div>
     </div>
@@ -466,69 +531,7 @@
   </div>
 </footer>
 
-<!-- Tweaks -->
-<div id="tweaks-root"></div>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="image-slot.js"></script>
 <script src="app.js"></script>
-<script src="stylesd.js"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" data-presets="react">
-/* TeamDominant — Tweaks */
-const TD_TWEAK_DEFAULTS = {
-  "direction": "map",
-  "accent": "#F0F0F0",
-  "density": "regular",
-  "display_font": "Space Grotesk",
-  "animations": true
-};
-const TD_ACCENT_KEY = { "#F0F0F0": "mono", "#AEB6C2": "steel" };
-const TD_DIR = { "Сплит": "split", "Центр": "center" };
-const TD_DIR_LABEL = { "split": "Сплит", "center": "Центр" };
-
-function TDTweaks() {
-  const [t, setTweak] = useTweaks(TD_TWEAK_DEFAULTS);
-  React.useEffect(() => {
-    if (window.cdSetDir) window.cdSetDir(t.direction);
-  }, [t.direction]);
-  React.useEffect(() => {
-    if (window.applyTweaks) window.applyTweaks({ accent: TD_ACCENT_KEY[t.accent] || "mono" });
-  }, [t.accent]);
-  React.useEffect(() => {
-    document.body.setAttribute("data-density", t.density);
-  }, [t.density]);
-  React.useEffect(() => {
-    document.documentElement.style.setProperty("--font-display", `"${t.display_font}", system-ui, sans-serif`);
-  }, [t.display_font]);
-  React.useEffect(() => {
-    document.body.classList.toggle("no-anim", !t.animations);
-  }, [t.animations]);
-
-  return (
-    <TweaksPanel title="Tweaks">
-      <TweakSection label="Направление hero" />
-      <TweakRadio label="Макет"
-        value={TD_DIR_LABEL[t.direction] || "Сплит"}
-        options={["Сплит", "Центр"]}
-        onChange={(v) => setTweak("direction", TD_DIR[v])} />
-      <TweakSection label="Стиль" />
-      <TweakColor label="Акцент" value={t.accent}
-        options={["#F0F0F0", "#AEB6C2"]}
-        onChange={(v) => setTweak("accent", v)} />
-      <TweakRadio label="Плотность" value={t.density}
-        options={[{value:"compact",label:"Плотно"},{value:"regular",label:"Обычно"},{value:"comfy",label:"Просторно"}]}
-        onChange={(v) => setTweak("density", v)} />
-      <TweakSelect label="Шрифт заголовков" value={t.display_font}
-        options={["Space Grotesk", "Manrope", "Archivo", "Sora", "Syne"]}
-        onChange={(v) => setTweak("display_font", v)} />
-      <TweakToggle label="Анимации" value={t.animations}
-        onChange={(v) => setTweak("animations", v)} />
-    </TweaksPanel>
-  );
-}
-ReactDOM.createRoot(document.getElementById("tweaks-root")).render(<TDTweaks />);
-</script>
+<script src="controld.js"></script>
 </body>
 </html>

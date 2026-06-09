@@ -65,11 +65,21 @@
       window.addEventListener("scroll", onScroll, { passive: true });
     }
     var burger = document.querySelector(".burger");
-    var links = document.querySelector(".nav-links");
-    if (burger && links) {
-      burger.addEventListener("click", function () { links.classList.toggle("open"); });
-      links.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () { links.classList.remove("open"); });
+    var collapse = document.querySelector(".nav-collapse");
+    if (burger && collapse) {
+      var setOpen = function (open) {
+        collapse.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+      };
+      burger.addEventListener("click", function () {
+        setOpen(!collapse.classList.contains("open"));
+      });
+      collapse.querySelectorAll(".nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () { setOpen(false); });
+      });
+      // close when resizing back up to desktop
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 980) setOpen(false);
       });
     }
     document.querySelectorAll(".lang button").forEach(function (b) {
@@ -118,14 +128,27 @@
 
   function fmt(n) { return n.toLocaleString(lang === "en" ? "en-US" : "ru-RU"); }
 
+  function flashEl(el) {
+    if (!el) return;
+    el.classList.remove("flash");
+    void el.offsetWidth; // force reflow so the animation re-triggers
+    el.classList.add("flash");
+  }
+
   window.renderPricing = function () {
     document.querySelectorAll(".price-card").forEach(function (card) {
       var tier = card.dataset.tier;
       var total = PRICES[tier][period];
       var per = Math.round(total / period);
       var valEl = card.querySelector(".val");
-      valEl.style.opacity = "0";
-      setTimeout(function () { valEl.textContent = fmt(total); valEl.style.opacity = "1"; }, 120);
+      var oldEl = card.querySelector(".old");
+      valEl.textContent = fmt(total);
+      flashEl(valEl);
+      if (oldEl) {
+        var base = PRICES[tier][1] * period;
+        oldEl.textContent = (period > 1 && base > total) ? fmt(base) + " ₽" : "";
+        flashEl(oldEl);
+      }
       var pm = card.querySelector(".price-permonth");
       pm.textContent = "≈ " + fmt(per) + (lang === "en" ? " ₽ / mo" : " ₽ / мес");
     });

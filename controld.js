@@ -85,95 +85,117 @@
     }
   }
 
-  /* ---------- network map canvas ---------- */
+  /* ---------- rotating wireframe globe (hero background) ---------- */
   function initMap() {
     var canvas = document.getElementById("cd-map");
     if (!canvas) return;
     var ctx = canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var W, H, active = false, raf = null;
+    var W, H, cx, cy, R, raf = null, ang = 0;
 
-    // normalized node positions (rough global spread)
-    var pts = [
-      [0.12, 0.34], [0.18, 0.52], [0.27, 0.30], [0.30, 0.62],
-      [0.46, 0.28], [0.49, 0.46], [0.52, 0.66], [0.58, 0.38],
-      [0.66, 0.30], [0.70, 0.55], [0.78, 0.42], [0.84, 0.60],
-      [0.88, 0.34], [0.40, 0.74], [0.62, 0.74], [0.36, 0.40]
-    ];
-    var hub = 8; // index of "home" hub
-    var pulses = [];
+    // graticule samples (lon/lat in radians) — built once, rotated per frame
+    var dots = [];
+    var DEG = Math.PI / 180;
+    // meridians (lines of longitude)
+    for (var lon = 0; lon < 360; lon += 24) {
+      for (var lat = -78; lat <= 78; lat += 7) {
+        dots.push([lon * DEG, lat * DEG, 0.9]);
+      }
+    }
+    // parallels (lines of latitude)
+    var rings = [-60, -30, 0, 30, 60];
+    for (var ri = 0; ri < rings.length; ri++) {
+      for (var lo = 0; lo < 360; lo += 7) {
+        dots.push([lo * DEG, rings[ri] * DEG, rings[ri] === 0 ? 1.15 : 0.9]);
+      }
+    }
+    // a few "location" hubs that softly pulse
+    var hubs = [
+      [4, 52], [13, 50], [-74, 40], [139, 35],
+      [37, 55], [-0.1, 51], [103, 1], [151, -33]
+    ].map(function (p) { return [p[0] * DEG, p[1] * DEG]; });
 
-    function rgba(a) { return "rgba(240,240,240," + a + ")"; }
+    function project(lon, lat) {
+      var clat = Math.cos(lat);
+      var x = clat * Math.cos(lon);
+      var y = Math.sin(lat);
+      var z = clat * Math.sin(lon);
+      // rotate around vertical (Y) axis
+      var ca = Math.cos(ang), sa = Math.sin(ang);
+      var rx = x * ca + z * sa;
+      var rz = -x * sa + z * ca;
+      return { sx: cx + rx * R, sy: cy - y * R, depth: rz };
+    }
 
     function resize() {
       W = canvas.clientWidth; H = canvas.clientHeight;
       canvas.width = W * dpr; canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    function P(i) { return [pts[i][0] * W, pts[i][1] * H]; }
-
-    function spawn() {
-      var to = Math.floor(Math.random() * pts.length);
-      if (to === hub) return;
-      pulses.push({ to: to, t: 0, sp: 0.006 + Math.random() * 0.006 });
+      cx = W * 0.5;
+      cy = H * 0.5;
+      R = Math.min(W * 0.46, H * 0.52);
     }
 
     function frame() {
       ctx.clearRect(0, 0, W, H);
-      var h = P(hub);
-      // arcs from hub
+
+      // faint silhouette ring
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, 6.2832);
+      ctx.strokeStyle = "rgba(240,240,240,0.10)";
       ctx.lineWidth = 1;
-      for (var i = 0; i < pts.length; i++) {
-        if (i === hub) continue;
-        var p = P(i);
-        ctx.strokeStyle = rgba(0.06);
-        ctx.beginPath();
-        var mx = (h[0] + p[0]) / 2, my = (h[1] + p[1]) / 2 - Math.abs(p[0] - h[0]) * 0.18;
-        ctx.moveTo(h[0], h[1]); ctx.quadraticCurveTo(mx, my, p[0], p[1]); ctx.stroke();
+      ctx.stroke();
+
+      // soft inner glow
+      var g = ctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R);
+      g.addColorStop(0, "rgba(240,240,240,0.035)");
+      g.addColorStop(1, "rgba(240,240,240,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.2832); ctx.fill();
+
+      // graticule dots
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        var p = project(d[0], d[1]);
+        var front = p.depth > 0;
+        // front dots brighter; back dots faint (transparent globe)
+        var a = (front ? 0.34 : 0.09) * d[2];
+        var rr = front ? 1.25 : 0.9;
+        ctx.fillStyle = "rgba(240,240,240," + a.toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(p.sx, p.sy, rr, 0, 6.2832); ctx.fill();
       }
-      // nodes
-      for (var j = 0; j < pts.length; j++) {
-        var q = P(j);
-        var isHub = j === hub;
-        ctx.fillStyle = rgba(isHub ? 0.9 : 0.4);
-        ctx.beginPath(); ctx.arc(q[0], q[1], isHub ? 4 : 2.2, 0, 6.2832); ctx.fill();
-        if (isHub) {
-          ctx.strokeStyle = rgba(0.25); ctx.lineWidth = 1;
-          var pr = 4 + ((Date.now() % 2000) / 2000) * 16;
-          ctx.globalAlpha = 1 - ((Date.now() % 2000) / 2000);
-          ctx.beginPath(); ctx.arc(q[0], q[1], pr, 0, 6.2832); ctx.stroke();
-          ctx.globalAlpha = 1;
-        }
+
+      // pulsing location hubs
+      var tphase = Date.now() * 0.001;
+      for (var h = 0; h < hubs.length; h++) {
+        var hp = project(hubs[h][0], hubs[h][1]);
+        if (hp.depth <= 0) continue; // only on the near face
+        var pulse = (Math.sin(tphase * 1.6 + h) + 1) / 2;
+        ctx.fillStyle = "rgba(240,240,240,0.9)";
+        ctx.beginPath(); ctx.arc(hp.sx, hp.sy, 1.8, 0, 6.2832); ctx.fill();
+        ctx.strokeStyle = "rgba(240,240,240," + (0.32 * (1 - pulse)).toFixed(3) + ")";
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(hp.sx, hp.sy, 2 + pulse * 13, 0, 6.2832); ctx.stroke();
       }
-      // pulses
-      for (var k = pulses.length - 1; k >= 0; k--) {
-        var pl = pulses[k]; pl.t += pl.sp;
-        if (pl.t >= 1) { pulses.splice(k, 1); continue; }
-        var d = P(pl.to);
-        var mx2 = (h[0] + d[0]) / 2, my2 = (h[1] + d[1]) / 2 - Math.abs(d[0] - h[0]) * 0.18;
-        var t = pl.t, it = 1 - t;
-        var x = it * it * h[0] + 2 * it * t * mx2 + t * t * d[0];
-        var y = it * it * h[1] + 2 * it * t * my2 + t * t * d[1];
-        ctx.fillStyle = rgba(0.9);
-        ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 6.2832); ctx.fill();
-        ctx.fillStyle = rgba(0.18);
-        ctx.beginPath(); ctx.arc(x, y, 6, 0, 6.2832); ctx.fill();
-      }
-      if (Math.random() < 0.06) spawn();
-      raf = requestAnimationFrame(frame);
+
+      var off = reduce || document.body.classList.contains("no-anim");
+      if (!off) ang += 0.0016;
+      if (!off) raf = requestAnimationFrame(frame);
+      else raf = null;
     }
 
-    var ro = new ResizeObserver(resize); ro.observe(canvas); resize();
+    var ro = new ResizeObserver(function () { resize(); if (!raf) frame(); });
+    ro.observe(canvas);
+    resize();
 
     window.cdMap = {
       setActive: function (on) {
-        active = on;
-        var off = reduce || document.body.classList.contains("no-anim");
-        if (on && !raf && !off) { raf = requestAnimationFrame(frame); }
+        if (on && !raf) { frame(); }   // frame() self-schedules unless reduced/no-anim
         else if (!on && raf) { cancelAnimationFrame(raf); raf = null; ctx.clearRect(0, 0, W, H); }
-        if (on && off) { frame(); if (raf) { cancelAnimationFrame(raf); raf = null; } } // static frame
       }
     };
+    // globe is the permanent hero background — start immediately
+    window.cdMap.setActive(true);
   }
 
   /* ---------- comparison accordion ---------- */
