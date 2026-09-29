@@ -243,8 +243,8 @@ export const COMPARE = {
   } satisfies Record<Mark, Text>,
   providers: [
     { logo: "TD", us: true, name: { ru: "TeamDominant", en: "TeamDominant" }, tagline: { ru: "это мы", en: "that's us" }, tint: "brand" },
-    { logo: "Z", name: { ru: "Zapret", en: "Zapret" }, tagline: { ru: "опенсорс-утилита", en: "open-source tool" }, tint: "pink" },
-    { logo: "ДВ", name: { ru: "Дядя Ваня", en: "Дядя Ваня" }, tagline: { ru: "Telegram-бот", en: "Telegram bot" }, tint: "blue" },
+    { logo: "Z", name: { ru: "Z**ret", en: "Z**ret" }, tagline: { ru: "опенсорс-утилита", en: "open-source tool" }, tint: "pink" },
+    { logo: "ДВ", name: { ru: "Дядя Петя", en: "Дядя Петя" }, tagline: { ru: "Telegram-бот", en: "Telegram bot" }, tint: "blue" },
     { logo: "MS", name: { ru: "Масс-маркет сервис", en: "Mainstream service" }, tagline: { ru: "крупный бренд", en: "big brand" }, tint: "green" },
   ] satisfies Provider[],
   rows: [
