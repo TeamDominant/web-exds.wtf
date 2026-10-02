@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Source animations for scripts/encode-illustrations.py (34 MB; only the encoded files ship)
+design/illustrations/

@@ -30,9 +30,8 @@ export function PageHero({
           <p className="max-w-xl text-base text-muted-foreground sm:text-lg">{subtitle}</p>
         </BlurFade>
         {aside && (
-          <BlurFade delay={0.15} className="mx-auto hidden w-full max-w-xs md:block">
-            {aside}
-          </BlurFade>
+          // not a <BlurFade>: the aside is an <Illustration>, which fades itself in
+          <div className="mx-auto hidden w-full max-w-xs md:block">{aside}</div>
         )}
       </Container>
     </section>

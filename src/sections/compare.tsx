@@ -1,110 +1,150 @@
-import { Check, Minus, X } from "lucide-react"
+import { Fragment } from "react"
+import { ArrowRight, Check, Minus, X } from "lucide-react"
 
 import { LogoMark } from "@/components/layout/logo"
 import { Section, SectionHeading } from "@/components/layout/section"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Badge } from "@/components/ui/badge"
 import { BlurFade } from "@/components/ui/blur-fade"
-import { COMPARE, type Mark, type Provider } from "@/content/site"
+import { Button } from "@/components/ui/button"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { COMMON, COMPARE, type Mark, type Provider } from "@/content/site"
 import { useI18n } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-const MARK_STYLE: Record<Mark, { icon: typeof Check; className: string }> = {
-  yes: { icon: Check, className: "bg-emerald-400 text-emerald-950" },
-  part: { icon: Minus, className: "bg-amber-300 text-amber-950" },
-  no: { icon: X, className: "bg-white/10 text-white/50" },
-}
+// Table layout adapted from the 21st.dev "comparison-3" block: grouped rows, our column highlighted,
+// a call to action under it. Plans became providers; the marks keep the site's three states.
 
 const TINT: Record<Provider["tint"], string> = {
-  // the brand mark brings its own black tile; the ring separates it from the dark section
-  brand: "ring-1 ring-white/20",
+  // the brand mark brings its own pink tile
+  brand: "",
   pink: "bg-pastel-pink text-ink",
   blue: "bg-pastel-blue text-ink",
   green: "bg-pastel-green text-ink",
 }
 
-function MarkIcon({ mark }: { mark: Mark }) {
+/** Our column, tinted top to bottom. */
+const OURS = "bg-brand-soft/60"
+
+function MarkIcon({ mark, ours = false }: { mark: Mark; ours?: boolean }) {
   const { t } = useI18n()
-  const { icon: Icon, className } = MARK_STYLE[mark]
+  const Icon = { yes: Check, part: Minus, no: X }[mark]
   return (
-    <span className={cn("grid size-6 place-items-center rounded-full sm:size-7", className)}>
-      <Icon className="size-3.5 sm:size-4" strokeWidth={3} aria-hidden />
+    <span
+      className={cn(
+        "mx-auto grid size-6 place-items-center rounded-full",
+        mark === "yes" && (ours ? "bg-brand text-brand-foreground" : "bg-ink text-background"),
+        mark === "part" && "bg-muted text-ink ring-1 ring-border",
+        mark === "no" && "text-muted-foreground/60"
+      )}
+    >
+      <Icon className="size-3.5" strokeWidth={3} aria-hidden />
       <span className="sr-only">{t(COMPARE.legend[mark])}</span>
     </span>
   )
 }
 
-// Mobile: the feature text spans a full row and the 4 provider marks sit below it.
-// sm+: one row — feature | 4 providers. The trailing 1rem column holds the accordion chevron.
-const GRID =
-  "grid grid-cols-[repeat(4,minmax(0,1fr))_1rem] items-center gap-x-2 gap-y-3 sm:grid-cols-[minmax(0,1fr)_repeat(4,6.5rem)_1rem] sm:gap-x-3"
-const FEATURE_CELL = "col-span-5 sm:col-span-1"
-
 export function Compare() {
   const { t } = useI18n()
-  const marks: Mark[] = ["yes", "part", "no"]
+  const columns = COMPARE.providers.length + 1
 
   return (
-    <Section id="compare" tone="ink">
-      <SectionHeading inverted kicker={t(COMPARE.kicker)} title={t(COMPARE.title)} subtitle={t(COMPARE.subtitle)} />
+    <Section id="compare">
+      <SectionHeading kicker={t(COMPARE.kicker)} title={t(COMPARE.title)} subtitle={t(COMPARE.subtitle)} />
 
-      <BlurFade inView className="mt-8 flex flex-wrap justify-center gap-5 text-sm text-white/70">
-        {marks.map((m) => (
-          <span key={m} className="inline-flex items-center gap-2">
-            <MarkIcon mark={m} />
-            <span aria-hidden>{t(COMPARE.legend[m])}</span>
-          </span>
-        ))}
-      </BlurFade>
+      <BlurFade inView delay={0.1} className="mx-auto mt-12 max-w-5xl">
+        {/* outlined with a hard shadow like the CTA block, so the white table doesn't melt into the white section */}
+        <div className="overflow-hidden rounded-3xl border-2 border-ink bg-card text-card-foreground shadow-[5px_7px_0_0_var(--shadow-hard)]">
+          {/* phones scroll sideways; the feature column stays pinned */}
+          <Table className="min-w-[40rem] table-fixed">
+            <TableHeader>
+              <TableRow className="hover:bg-transparent">
+                <TableHead className="sticky left-0 z-10 w-44 bg-card px-4 py-4 align-bottom whitespace-normal sm:w-[36%] sm:px-6">
+                  <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+                    {t(COMPARE.capability)}
+                  </span>
+                  <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-normal text-muted-foreground">
+                    {(["yes", "part", "no"] as const).map((m) => (
+                      <li key={m} className="flex items-center gap-1.5" aria-hidden>
+                        <span className="[&>span]:size-5">
+                          <MarkIcon mark={m} />
+                        </span>
+                        {t(COMPARE.legend[m])}
+                      </li>
+                    ))}
+                  </ul>
+                </TableHead>
+                {COMPARE.providers.map((p) => (
+                  <TableHead key={p.logo} className={cn("px-2 py-4 text-center align-bottom whitespace-normal", p.us && OURS)}>
+                    <div className="flex flex-col items-center gap-1.5">
+                      <span
+                        className={cn(
+                          "grid size-10 place-items-center overflow-hidden rounded-xl font-heading text-xs font-extrabold",
+                          TINT[p.tint]
+                        )}
+                      >
+                        {p.us ? <LogoMark className="size-full" /> : p.logo}
+                      </span>
+                      <span className="text-xs leading-tight font-semibold text-ink">{t(p.name)}</span>
+                      {p.us ? (
+                        <Badge className="bg-brand text-brand-foreground">{t(p.tagline)}</Badge>
+                      ) : (
+                        <span className="text-[11px] leading-tight font-normal text-muted-foreground">{t(p.tagline)}</span>
+                      )}
+                    </div>
+                  </TableHead>
+                ))}
+              </TableRow>
+            </TableHeader>
 
-      <BlurFade inView delay={0.1} className="mx-auto mt-10 max-w-5xl">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-2 sm:p-3">
-          {/* header */}
-          <div className={cn(GRID, "items-start px-4 pt-3 pb-4")}>
-            <span className="hidden self-center text-xs font-semibold tracking-wider text-white/50 uppercase sm:block">
-              {t(COMPARE.capability)}
-            </span>
-            {COMPARE.providers.map((p) => (
-              <div key={p.logo} className="flex flex-col items-center gap-1.5 text-center">
-                <span
-                  className={cn(
-                    "grid size-9 place-items-center overflow-hidden rounded-xl font-heading text-xs font-extrabold sm:size-10",
-                    TINT[p.tint]
-                  )}
-                  title={t(p.name)}
-                >
-                  {p.us ? <LogoMark className="size-full" /> : p.logo}
-                </span>
-                <span className="hidden text-xs leading-tight font-semibold text-white sm:block">{t(p.name)}</span>
-                <span className="hidden text-[11px] leading-tight text-white/50 sm:block">{t(p.tagline)}</span>
-              </div>
-            ))}
-            <span />
-          </div>
-
-          <Accordion type="multiple" defaultValue={["row-0"]} className="rounded-2xl border-white/10">
-            {COMPARE.rows.map((row, i) => (
-              <AccordionItem
-                key={row.feature.en}
-                value={`row-${i}`}
-                className="border-white/10 data-open:bg-white/[0.04]"
-              >
-                <AccordionTrigger
-                  className={cn(
-                    GRID,
-                    "px-4 py-4 text-white hover:no-underline **:data-[slot=accordion-trigger-icon]:text-white/50"
-                  )}
-                >
-                  <span className={cn(FEATURE_CELL, "text-sm font-medium sm:text-[15px]")}>{t(row.feature)}</span>
-                  {row.marks.map((m, j) => (
-                    <span key={j} className="flex justify-center">
-                      <MarkIcon mark={m} />
-                    </span>
+            <TableBody>
+              {COMPARE.groups.map((group) => (
+                <Fragment key={group.title.en}>
+                  <TableRow className="bg-muted/60 hover:bg-muted/60">
+                    <TableCell colSpan={columns} className="px-4 py-2 sm:px-6">
+                      <span className="sticky left-4 text-xs font-semibold tracking-wider text-muted-foreground uppercase sm:left-6">
+                        {t(group.title)}
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                  {group.rows.map((row) => (
+                    <TableRow key={row.feature.en} className="hover:bg-transparent">
+                      <TableCell className="sticky left-0 z-10 bg-card px-4 py-3.5 whitespace-normal sm:px-6">
+                        <span className="text-sm font-medium text-ink sm:text-[15px]">{t(row.feature)}</span>
+                        <span className="mt-1 hidden text-[13px] leading-snug text-muted-foreground sm:block">
+                          {t(row.detail)}
+                        </span>
+                      </TableCell>
+                      {row.marks.map((m, i) => {
+                        const ours = COMPARE.providers[i].us
+                        return (
+                          <TableCell key={COMPARE.providers[i].logo} className={cn("px-2 text-center", ours && OURS)}>
+                            <MarkIcon mark={m} ours={ours} />
+                          </TableCell>
+                        )
+                      })}
+                    </TableRow>
                   ))}
-                </AccordionTrigger>
-                <AccordionContent className="max-w-2xl text-white/70">{t(row.detail)}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                </Fragment>
+              ))}
+
+              <TableRow className="hover:bg-transparent">
+                <TableCell className="sticky left-0 z-10 bg-card" />
+                {COMPARE.providers.map((p) => (
+                  <TableCell key={p.logo} className={cn("px-2 py-4 text-center", p.us && OURS)}>
+                    {p.us && (
+                      <Button asChild variant="brand" size="sm" className="w-full px-2 font-semibold sm:px-3">
+                        <a href="#pricing">
+                          {t(COMMON.getStarted)}
+                          {/* the phone column is too narrow for the arrow */}
+                          <ArrowRight data-icon="inline-end" className="max-sm:hidden" />
+                        </a>
+                      </Button>
+                    )}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
       </BlurFade>
     </Section>

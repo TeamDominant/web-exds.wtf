@@ -18,11 +18,11 @@ export function HomePage() {
       <Hero />
       <Platforms />
       <Features />
-      <Locations />
+      <Pricing />
       <HowItWorks />
+      <Locations />
       <Compare />
       <Testimonials />
-      <Pricing />
       <Faq />
       <Cta />
     </>

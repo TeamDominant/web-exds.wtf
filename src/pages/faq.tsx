@@ -27,7 +27,7 @@ export function FaqPage() {
         kicker={t(FAQ.kicker)}
         title={t(FAQ.title)}
         subtitle={t(FAQ.subtitle)}
-        aside={<Illustration slot="faq" />}
+        aside={<Illustration slot="faq" eager />}
       />
       <Container className="max-w-3xl py-14 sm:py-20">
         <BlurFade>

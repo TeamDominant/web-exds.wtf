@@ -13,8 +13,8 @@ export const CONTACTS = {
 export const META = {
   title: { ru: "TeamDominant", en: "TeamDominant" },
   description: {
-    ru: "TeamDominant – современный сервис защищённого соединения: множество качественных локаций, без логов, на всех устройствах.",
-    en: "TeamDominant is a modern secure-connection service: many quality locations, no logs, on every device.",
+    ru: "TeamDominant – современный сервис защищённого соединения: множество качественных локаций и все ваши устройства в одной подписке.",
+    en: "TeamDominant is a modern secure-connection service: many quality locations and all your devices on one subscription.",
   },
 } satisfies Record<string, Text>
 
@@ -57,8 +57,8 @@ export const HERO = {
   secondary: { ru: "Как это работает", en: "How it works" },
   checklist: [
     {
-      ru: "Каналы до 2,5 Гбит/с и строгая политика без логов",
-      en: "Channels up to 2.5 Gbit/s with a strict no-logs policy",
+      ru: "Каналы до 2,5 Гбит/с без просадок в часы пик",
+      en: "Channels up to 2.5 Gbit/s with no peak-hour slowdowns",
     },
     {
       ru: "Стабильное и быстрое соединение в любой точке мира",
@@ -121,8 +121,8 @@ export const FEATURES = {
     en: "Built for speed, privacy and zero hassle",
   },
   subtitle: {
-    ru: "Всё для быстрого и приватного соединения – без замедлений, логов и лимитов.",
-    en: "Everything you need for a fast, private connection – without slowdowns, logs or limits.",
+    ru: "Всё для быстрого и приватного соединения – без замедлений и лимитов.",
+    en: "Everything you need for a fast, private connection – without slowdowns or limits.",
   },
   uptime: {
     value: 99.9,
@@ -131,15 +131,15 @@ export const FEATURES = {
   speed: {
     title: { ru: "Скорость без компромиссов", en: "Speed without compromise" },
     text: {
-      ru: "Серверы от 1 до 2,5 Гбит/с и только проверенные дата-центры. Мы не храним историю и не следим за трафиком.",
-      en: "Servers from 1 to 2.5 Gbit/s and only vetted data centers. We don't store history or watch your traffic.",
+      ru: "Серверы от 1 до 2,5 Гбит/с и только проверенные дата-центры.",
+      en: "Servers from 1 to 2.5 Gbit/s and only vetted data centers.",
     },
   },
   privacy: {
     title: { ru: "Приватность по умолчанию", en: "Privacy by default" },
     text: {
-      ru: "Современные протоколы без утечек. Ни истории, ни DNS-запросов, ни содержимого трафика.",
-      en: "Modern, audited protocols with no leaks. No history, no DNS queries, no traffic contents.",
+      ru: "Современные протоколы шифруют весь трафик.",
+      en: "Modern protocols encrypt all your traffic.",
     },
   },
   devices: {
@@ -231,10 +231,16 @@ export type Provider = {
   tint: "brand" | "pink" | "blue" | "green"
 }
 
+export type CompareRow = { feature: Text; detail: Text; marks: [Mark, Mark, Mark, Mark] }
+export type CompareGroup = { title: Text; rows: CompareRow[] }
+
 export const COMPARE = {
   kicker: { ru: "Сравнение", en: "Comparison" },
   title: { ru: "Что есть у нас – и нет у других", en: "What we have – and others don't" },
-  subtitle: { ru: "Нажми на строку, чтобы раскрыть детали.", en: "Tap any row to see the details." },
+  subtitle: {
+    ru: "TeamDominant рядом с тем, чем обычно пользуются вместо нас.",
+    en: "TeamDominant next to what people usually use instead.",
+  },
   capability: { ru: "Возможность", en: "Capability" },
   legend: {
     yes: { ru: "есть", en: "yes" },
@@ -247,80 +253,95 @@ export const COMPARE = {
     { logo: "ДВ", name: { ru: "Дядя Петя", en: "Дядя Петя" }, tagline: { ru: "Telegram-бот", en: "Telegram bot" }, tint: "blue" },
     { logo: "MS", name: { ru: "Масс-маркет сервис", en: "Mainstream service" }, tagline: { ru: "крупный бренд", en: "big brand" }, tint: "green" },
   ] satisfies Provider[],
-  rows: [
+  groups: [
     {
-      feature: { ru: "Умный роутинг – соединение можно не выключать", en: "Smart routing – no need to toggle the connection" },
-      detail: {
-        ru: "Локальный трафик идёт напрямую, остальной – через защищённый туннель. Не нужно вручную включать и выключать – всё работает в фоне.",
-        en: "Local traffic goes direct, the rest runs through the secure tunnel. No manual on/off – it just works in the background.",
-      },
-      marks: ["yes", "part", "no", "part"],
+      title: { ru: "Соединение", en: "Connection" },
+      rows: [
+        {
+          feature: { ru: "Умный роутинг – соединение можно не выключать", en: "Smart routing – no need to toggle the connection" },
+          detail: {
+            ru: "Локальный трафик идёт напрямую, остальной – через защищённый туннель. Не нужно вручную включать и выключать – всё работает в фоне.",
+            en: "Local traffic goes direct, the rest runs through the secure tunnel. No manual on/off – it just works in the background.",
+          },
+          marks: ["yes", "part", "no", "part"],
+        },
+        {
+          feature: { ru: "Стабильный канал, без гонки за количеством", en: "Stable channel, no race for server count" },
+          detail: {
+            ru: "Мы не набиваем список сотнями мёртвых серверов. Каждый узел держит заявленную скорость даже под нагрузкой.",
+            en: "We don't pad the list with hundreds of dead servers. Every node holds its stated speed under load.",
+          },
+          marks: ["yes", "no", "no", "no"],
+        },
+        {
+          feature: { ru: "Безлимитный трафик", en: "Unlimited traffic" },
+          detail: {
+            ru: "Никаких лимитов по гигабайтам и троттлинга после порога – пользуйся сколько нужно.",
+            en: "No gigabyte caps and no throttling after a threshold – use as much as you need.",
+          },
+          marks: ["yes", "part", "no", "part"],
+        },
+      ],
     },
     {
-      feature: { ru: "Стабильный канал, без гонки за количеством", en: "Stable channel, no race for server count" },
-      detail: {
-        ru: "Мы не набиваем список сотнями мёртвых серверов. Каждый узел держит заявленную скорость даже под нагрузкой.",
-        en: "We don't pad the list with hundreds of dead servers. Every node holds its stated speed under load.",
-      },
-      marks: ["yes", "no", "no", "no"],
+      title: { ru: "Подписка", en: "Subscription" },
+      rows: [
+        {
+          feature: { ru: "Несколько устройств в подписке + выгодные тарифы", en: "Several devices per plan + fair pricing" },
+          detail: {
+            ru: "До 15 устройств на один аккаунт с возможностью докупить ещё, а цена за месяц ниже при длинном сроке подписки.",
+            en: "Up to 15 devices on one account with more available to buy, and the monthly price drops the longer your term.",
+          },
+          marks: ["yes", "no", "no", "part"],
+        },
+        {
+          feature: { ru: "Личный кабинет на сайте, а не только в Telegram-боте", en: "Dashboard on the web, not just a Telegram bot" },
+          detail: {
+            ru: "Управляй подпиской и устройствами и на сайте, и в боте – как удобнее именно тебе.",
+            en: "Manage your subscription and devices both on the website and in the bot – whichever is handier.",
+          },
+          marks: ["yes", "no", "part", "yes"],
+        },
+        {
+          feature: { ru: "Промокоды, реферальная и партнёрская программы", en: "Promo codes, referral & partner programs" },
+          detail: {
+            ru: "Скидки по промокодам, награды за приглашённых друзей и партнёрская программа для команд.",
+            en: "Discounts via promo codes, rewards for invited friends and a partner program for teams.",
+          },
+          marks: ["yes", "no", "no", "part"],
+        },
+      ],
     },
     {
-      feature: { ru: "Безлимитный трафик", en: "Unlimited traffic" },
-      detail: {
-        ru: "Никаких лимитов по гигабайтам и троттлинга после порога – пользуйся сколько нужно.",
-        en: "No gigabyte caps and no throttling after a threshold – use as much as you need.",
-      },
-      marks: ["yes", "part", "no", "part"],
+      title: { ru: "Поддержка и развитие", en: "Support & development" },
+      rows: [
+        {
+          feature: { ru: "Быстрая живая поддержка", en: "Fast human support" },
+          detail: {
+            ru: "Живые люди в чате – быстрые ответы и помощь с настройкой в любое время.",
+            en: "Real people in chat – quick answers and help with setup whenever you need it.",
+          },
+          marks: ["yes", "no", "part", "part"],
+        },
+        {
+          feature: { ru: "Максимально быстрое реагирование на проблемы", en: "Rapid response to incidents" },
+          detail: {
+            ru: "Мы мониторим сеть и устраняем сбои за считанные минуты, а не дни.",
+            en: "We monitor the network and fix outages in minutes, not days.",
+          },
+          marks: ["yes", "no", "no", "part"],
+        },
+        {
+          feature: { ru: "Стабильные улучшения сервиса", en: "Steady service improvements" },
+          detail: {
+            ru: "Регулярные обновления приложений и инфраструктуры – сервис постоянно становится лучше.",
+            en: "Regular app and infrastructure updates – the service keeps getting better.",
+          },
+          marks: ["yes", "part", "no", "part"],
+        },
+      ],
     },
-    {
-      feature: { ru: "Несколько устройств в подписке + выгодные тарифы", en: "Several devices per plan + fair pricing" },
-      detail: {
-        ru: "До 15 устройств на один аккаунт с возможностью докупить ещё, а цена за месяц ниже при длинном сроке подписки.",
-        en: "Up to 15 devices on one account with more available to buy, and the monthly price drops the longer your term.",
-      },
-      marks: ["yes", "no", "no", "part"],
-    },
-    {
-      feature: { ru: "Личный кабинет на сайте, а не только в Telegram-боте", en: "Dashboard on the web, not just a Telegram bot" },
-      detail: {
-        ru: "Управляй подпиской и устройствами и на сайте, и в боте – как удобнее именно тебе.",
-        en: "Manage your subscription and devices both on the website and in the bot – whichever is handier.",
-      },
-      marks: ["yes", "no", "part", "yes"],
-    },
-    {
-      feature: { ru: "Быстрая живая поддержка", en: "Fast human support" },
-      detail: {
-        ru: "Живые люди в чате – быстрые ответы и помощь с настройкой в любое время.",
-        en: "Real people in chat – quick answers and help with setup whenever you need it.",
-      },
-      marks: ["yes", "no", "part", "part"],
-    },
-    {
-      feature: { ru: "Максимально быстрое реагирование на проблемы", en: "Rapid response to incidents" },
-      detail: {
-        ru: "Мы мониторим сеть и устраняем сбои за считанные минуты, а не дни.",
-        en: "We monitor the network and fix outages in minutes, not days.",
-      },
-      marks: ["yes", "no", "no", "part"],
-    },
-    {
-      feature: { ru: "Стабильные улучшения сервиса", en: "Steady service improvements" },
-      detail: {
-        ru: "Регулярные обновления приложений и инфраструктуры – сервис постоянно становится лучше.",
-        en: "Regular app and infrastructure updates – the service keeps getting better.",
-      },
-      marks: ["yes", "part", "no", "part"],
-    },
-    {
-      feature: { ru: "Промокоды, реферальная и партнёрская программы", en: "Promo codes, referral & partner programs" },
-      detail: {
-        ru: "Скидки по промокодам, награды за приглашённых друзей и партнёрская программа для команд.",
-        en: "Discounts via promo codes, rewards for invited friends and a partner program for teams.",
-      },
-      marks: ["yes", "no", "no", "part"],
-    },
-  ] satisfies { feature: Text; detail: Text; marks: [Mark, Mark, Mark, Mark] }[],
+  ] satisfies CompareGroup[],
 }
 
 export type Period = 1 | 3 | 12
@@ -370,7 +391,7 @@ export const PRICING = {
       prices: { 1: 250, 3: 670, 12: 2250 },
       features: [
         { ru: "Множество качественных локаций", en: "Many quality locations" },
-        { ru: "Безлимитный трафик, без логов", en: "Unlimited traffic, no logs" },
+        { ru: "Безлимитный трафик", en: "Unlimited traffic" },
         { ru: "Современные протоколы", en: "Modern protocols" },
         { ru: "Поддержка в чате", en: "Chat support" },
       ],
@@ -428,8 +449,8 @@ export const FAQ = {
     {
       q: { ru: "Чем отличаются тарифы?", en: "What's the difference between the plans?" },
       a: {
-        ru: "Все тарифы используют одну сеть, одинаковую скорость и политику отсутствия логов. Отличие – только в количестве одновременно подключённых устройств: «Старт» – от 3 до 5, «Плюс» – от 6 до 9, «Максимум» – от 10 до 15 с возможностью докупить ещё.",
-        en: "All plans share the same network, speed and no-logs policy. They differ only in how many devices you can connect at once: Start – 3 to 5, Plus – 6 to 9, Maximum – 10 to 15, with more available to buy.",
+        ru: "Все тарифы используют одну сеть и одинаковую скорость. Отличие – только в количестве одновременно подключённых устройств: «Старт» – от 3 до 5, «Плюс» – от 6 до 9, «Максимум» – от 10 до 15 с возможностью докупить ещё.",
+        en: "All plans share the same network and speed. They differ only in how many devices you can connect at once: Start – 3 to 5, Plus – 6 to 9, Maximum – 10 to 15, with more available to buy.",
       },
     },
     {
@@ -444,13 +465,6 @@ export const FAQ = {
       a: {
         ru: "Windows, macOS, Linux, iOS, Android и роутеры. Один аккаунт работает сразу на нескольких устройствах в пределах лимита вашего тарифа.",
         en: "Windows, macOS, Linux, iOS, Android and routers. One account works across several devices at once within your plan's limit.",
-      },
-    },
-    {
-      q: { ru: "Вы храните логи?", en: "Do you keep logs?" },
-      a: {
-        ru: "Нет. Мы не храним историю посещений, DNS-запросы и содержимое трафика. Сохраняется только минимум, необходимый для работы подписки.",
-        en: "No. We don't store your browsing history, DNS queries or traffic contents. We only keep the minimum needed to run your subscription.",
       },
     },
     {

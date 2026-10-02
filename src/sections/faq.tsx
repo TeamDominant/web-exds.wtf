@@ -34,15 +34,16 @@ export function Faq() {
       <div className="grid gap-12 lg:grid-cols-[1fr_1.35fr] lg:gap-16">
         <div className="flex flex-col gap-8">
           <SectionHeading align="left" kicker="FAQ" title={t(FAQ.title)} subtitle={t(FAQ.subtitle)} />
-          <BlurFade inView delay={0.1} className="flex flex-col gap-8">
+          <BlurFade inView delay={0.1}>
             <Button asChild variant="outline" size="lg" className="w-fit">
               <a href="/faq.html">
                 {t(FAQ.all)}
                 <ArrowRight data-icon="inline-end" />
               </a>
             </Button>
-            <Illustration slot="faq" className="hidden max-w-sm lg:block" />
           </BlurFade>
+          {/* outside the <BlurFade>: the illustration fades itself in */}
+          <Illustration slot="faq" className="hidden max-w-sm lg:block" />
         </div>
         <BlurFade inView delay={0.1}>
           <FaqList items={FAQ.items} />

@@ -146,6 +146,18 @@ const PLACEHOLDERS = {
       <Sparkle x={380} y={60} s={0.8} />
     </Scene>
   ),
+  legal: (
+    <Scene
+      viewBox="0 0 400 300"
+      aspect="400 / 300"
+      stickers={[{ character: "thinker", bg: "yellow", className: "left-[6%] bottom-[4%] w-[36%]" }]}
+    >
+      <Blob d="M200 30 C310 20 390 80 380 160 C370 250 290 285 195 280 C100 275 20 235 25 150 C30 70 100 40 200 30 Z" fill={green} />
+      <Shield x={270} y={140} s={1.1} r={4} />
+      <Lock x={350} y={60} s={0.6} r={10} />
+      <Sparkle x={140} y={50} s={0.9} fill={brand} />
+    </Scene>
+  ),
 } satisfies Record<IllustrationSlot, ReactNode>
 
 /** Loaded lazily by <Illustration /> only when a slot has no provided image. */

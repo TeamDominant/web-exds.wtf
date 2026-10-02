@@ -86,9 +86,10 @@ export function Hero() {
           </AnimatedGroup>
         </div>
 
-        <BlurFade delay={0.2} className="mx-auto w-full max-w-xl lg:max-w-none">
-          <Illustration slot="hero" alt={t(HERO.illustrationAlt)} />
-        </BlurFade>
+        {/* no <BlurFade> here: the illustration fades itself in (see Illustration) */}
+        <div className="mx-auto w-full max-w-xl lg:max-w-none">
+          <Illustration slot="hero" alt={t(HERO.illustrationAlt)} eager />
+        </div>
       </Container>
     </section>
   )

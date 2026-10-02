@@ -53,9 +53,12 @@ export function BlurFade({
       filter: `blur(${blur})`,
     },
     visible: {
-      [direction === "left" || direction === "right" ? "x" : "y"]: 0,
+      ...(direction === "left" || direction === "right" ? { x: 0 } : { y: 0 }),
       opacity: 1,
       filter: `blur(0px)`,
+      // a leftover `blur(0px)` is still a stacking context, which cuts mix-blend-mode off from the page
+      // (the illustrations drop their white paper that way)
+      transitionEnd: { filter: "none" },
     },
   }
   const combinedVariants = variant ?? defaultVariants

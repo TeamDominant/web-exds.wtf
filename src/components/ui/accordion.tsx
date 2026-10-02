@@ -68,7 +68,9 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "h-(--radix-accordion-content-height) pt-0 pb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
+          // no fixed h-(--radix-accordion-content-height) here: that height is measured once, so after a resize or
+          // a language switch the end of the answer spilled under the next item. The outer animation uses it.
+          "pt-0 pb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
           className
         )}
       >

@@ -50,7 +50,8 @@ function TestimonialCard({ item, index }: { item: Testimonial; index: number }) 
   const body = (
     <Card
       className={cn(
-        "h-full w-[300px] gap-5 rounded-3xl p-6 transition-shadow hover:shadow-lg hover:shadow-ink/5 sm:w-[340px]",
+        // the section is bg-surface: a firmer outline in both themes, and a step lighter than it in dark mode
+        "h-full w-[300px] gap-5 rounded-3xl p-6 ring-ink/12 transition-shadow hover:shadow-lg hover:shadow-ink/5 sm:w-[340px] dark:bg-muted",
         long && "sm:w-[560px]"
       )}
     >
@@ -118,7 +119,7 @@ export function Testimonials() {
   const rows = ITEMS.length >= 6 ? [ITEMS.filter((_, i) => i % 2 === 0), ITEMS.filter((_, i) => i % 2 === 1)] : [ITEMS]
 
   return (
-    <section id="reviews" className="overflow-hidden py-20 sm:py-28">
+    <section id="reviews" className="overflow-hidden bg-surface py-20 sm:py-28">
       <Container>
         <SectionHeading
           kicker={t(TESTIMONIALS_META.kicker)}
@@ -129,7 +130,7 @@ export function Testimonials() {
       {/* full-bleed rows */}
       <BlurFade inView delay={0.1} className="relative mt-14 flex flex-col gap-2">
         {rows.map((row, r) => (
-          <Marquee key={r} pauseOnHover reverse={r === 1} className="py-2 [--duration:55s] [--gap:1.25rem]">
+          <Marquee key={r} pauseOnHover reverse={r === 1} duration={55} className="py-2 [--gap:1.25rem]">
             {row.map((item) => {
               const index = ITEMS.indexOf(item)
               return <TestimonialCard key={index} item={item} index={index} />
@@ -137,8 +138,8 @@ export function Testimonials() {
           </Marquee>
         ))}
         {/* soft fade at the edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-background sm:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-background sm:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-surface sm:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-surface sm:w-40" />
       </BlurFade>
     </section>
   )

@@ -1,4 +1,4 @@
-import mark from "@/assets/brand/Dominant_BLACK_BG_SQUARE.svg"
+import mark from "@/assets/brand/Dominant_PINK_BG_SQUARE.svg"
 import { cn } from "@/lib/utils"
 
 /** The fox-mask brand mark on its black tile. */

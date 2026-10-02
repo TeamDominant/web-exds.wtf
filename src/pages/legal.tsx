@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+import { Illustration } from "@/components/illustration"
 import { PageHero } from "@/components/layout/page-hero"
 import { Container } from "@/components/layout/section"
 import { LEGAL_META, LEGAL_SECTIONS, type LegalBlock } from "@/content/legal"
@@ -71,7 +72,12 @@ export function LegalPage() {
 
   return (
     <>
-      <PageHero kicker={t(LEGAL_META.kicker)} title={t(LEGAL_META.title)} subtitle={t(LEGAL_META.subtitle)} />
+      <PageHero
+        kicker={t(LEGAL_META.kicker)}
+        title={t(LEGAL_META.title)}
+        subtitle={t(LEGAL_META.subtitle)}
+        aside={<Illustration slot="legal" eager />}
+      />
       <Container className="grid grid-cols-1 gap-10 py-14 sm:py-20 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           {/* mobile: a swipeable row that runs to the screen edges */}
