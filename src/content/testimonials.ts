@@ -85,4 +85,11 @@ export const TESTIMONIALS: Testimonial[] = [
       en: "Been using for a year, d*ck's up, hits register in CS, recommend it. The d*ck part was probably too much",
     },
   },
+  {
+    name: client(573),
+    text: {
+      ru: "Очень хорошая поддержка у вас, аперативно работает) и услуги за цену очень приятно, спасибо вам большое! Что стараетесь для людей!",
+      en: "Your support is really good, works fast) and the service is very nicely priced, thank you so much! For going the extra mile for people!",
+    },
+  },
 ]
