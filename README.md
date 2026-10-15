@@ -38,3 +38,16 @@ npm run lint
 
 Workflow `.github/workflows/deploy.yml` собирает сайт и публикует `dist/` на GitHub Pages при пуше в `main`.
 В настройках репозитория: **Settings → Pages → Source: GitHub Actions**. Домен берётся из `public/CNAME`.
+
+## Зеркала exds.tg и exds.wtf
+
+Репозитории `web-exds.tg` и `web-exds.wtf` — копии `web-dominants.link`: отличаются только доменом
+в `og:url` / `og:image` и своими `CNAME`. Правки вносим в `web-dominants.link`, коммитим и переносим скриптом
+(все три репозитория должны лежать в одной папке):
+
+```bash
+scripts/sync.sh            # скопировать и показать, что изменилось в зеркалах
+scripts/sync.sh --commit   # и закоммитить в каждом зеркале с сообщением последнего коммита отсюда
+```
+
+Пушить зеркала нужно отдельно.
