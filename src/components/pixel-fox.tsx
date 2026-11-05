@@ -1,14 +1,14 @@
-import cat from "@/assets/brand/cat.gif"
+import fox from "@/assets/brand/fox.gif"
 import { cn } from "@/lib/utils"
 
 /**
  * Decorative 33×26 pixel art, scaled 2× so its pixels stay square. At 52px tall it fits inside the
  * py-12 / py-14 gaps it stands in, so it never affects the layout around it.
  */
-export function PixelCat({ className }: { className?: string }) {
+export function PixelFox({ className }: { className?: string }) {
   return (
     <img
-      src={cat}
+      src={fox}
       alt=""
       width={33}
       height={26}

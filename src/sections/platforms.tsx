@@ -1,7 +1,7 @@
 import { Laptop, Monitor, Router, Smartphone, Tablet, Tv, type LucideIcon } from "lucide-react"
 
 import { Container } from "@/components/layout/section"
-import { PixelCat } from "@/components/pixel-cat"
+import { PixelFox } from "@/components/pixel-fox"
 import { BlurFade } from "@/components/ui/blur-fade"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { PLATFORMS, type PlatformId } from "@/content/site"
@@ -57,7 +57,7 @@ export function Platforms() {
         </InfiniteSlider>
 
         {/* Stands on the section's bottom border: -bottom-12 cancels the section's py-12. */}
-        <PixelCat className="right-4 -bottom-12 sm:right-6 lg:right-8" />
+        <PixelFox className="right-4 -bottom-12 sm:right-6 lg:right-8" />
       </Container>
     </section>
   )

@@ -1,6 +1,6 @@
 import { Logo } from "@/components/layout/logo"
 import { Container } from "@/components/layout/section"
-import { PixelCat } from "@/components/pixel-cat"
+import { PixelFox } from "@/components/pixel-fox"
 import { BRAND, COMMON, FOOTER } from "@/content/site"
 import { useI18n } from "@/lib/i18n"
 
@@ -34,7 +34,7 @@ export function SiteFooter() {
       </Container>
       <Container>
         <div className="relative flex flex-col gap-2 border-t py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <PixelCat className="bottom-full left-0 mb-px" />
+          <PixelFox className="bottom-full left-0 mb-px" />
           <span>
             © {YEAR} {BRAND.name}
           </span>
