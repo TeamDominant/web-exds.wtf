@@ -44,7 +44,7 @@ export function Platforms() {
           gap={40}
           speed={30}
           speedOnHover={12}
-          className="w-[calc(100%-5rem)] self-start [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] sm:w-[calc(100%-7.5rem)]"
+          className="w-full [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
         >
           {PLATFORMS.models.map((model) => {
             const name = typeof model === "string" ? model : t(model)
