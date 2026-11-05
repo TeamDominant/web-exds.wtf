@@ -1,6 +1,7 @@
 import { Laptop, Monitor, Router, Smartphone, Tablet, Tv, type LucideIcon } from "lucide-react"
 
 import { Container } from "@/components/layout/section"
+import { PixelCat } from "@/components/pixel-cat"
 import { BlurFade } from "@/components/ui/blur-fade"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { PLATFORMS, type PlatformId } from "@/content/site"
@@ -19,7 +20,7 @@ export function Platforms() {
   const { t } = useI18n()
   return (
     <section id="platforms" className="border-y bg-surface py-12">
-      <Container className="flex flex-col items-center gap-8">
+      <Container className="relative flex flex-col items-center gap-8">
         <BlurFade inView>
           <p className="max-w-xl text-center text-base font-medium text-ink sm:text-lg">{t(PLATFORMS.lead)}</p>
         </BlurFade>
@@ -43,7 +44,7 @@ export function Platforms() {
           gap={40}
           speed={30}
           speedOnHover={12}
-          className="w-full [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+          className="w-[calc(100%-5rem)] self-start [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] sm:w-[calc(100%-7.5rem)]"
         >
           {PLATFORMS.models.map((model) => {
             const name = typeof model === "string" ? model : t(model)
@@ -54,6 +55,9 @@ export function Platforms() {
             )
           })}
         </InfiniteSlider>
+
+        {/* Stands on the section's bottom border: -bottom-12 cancels the section's py-12. */}
+        <PixelCat className="right-4 -bottom-12 sm:right-6 lg:right-8" />
       </Container>
     </section>
   )
