@@ -1,6 +1,6 @@
 import { Logo } from "@/components/layout/logo"
 import { Container } from "@/components/layout/section"
-import { PixelCat } from "@/components/pixel-cat"
+import { PixelFox } from "@/components/pixel-fox"
 import { BRAND, COMMON, FOOTER } from "@/content/site"
 import { useI18n } from "@/lib/i18n"
 
@@ -10,8 +10,7 @@ export function SiteFooter() {
   const { t } = useI18n()
   return (
     <footer className="border-t bg-surface">
-      {/* sm:pb-21 keeps the links clear of the cat standing on the divider below. */}
-      <Container className="grid gap-12 py-14 sm:pb-21 lg:grid-cols-[1.2fr_2fr]">
+      <Container className="grid gap-12 py-14 lg:grid-cols-[1.2fr_2fr]">
         <div className="flex max-w-xs flex-col gap-4">
           <Logo />
           <p className="text-sm text-muted-foreground">{t(COMMON.tagline)}</p>
@@ -35,7 +34,7 @@ export function SiteFooter() {
       </Container>
       <Container>
         <div className="relative flex flex-col gap-2 border-t py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <PixelCat className="right-0 bottom-full mb-px" />
+          <PixelFox className="bottom-full left-0 mb-px" />
           <span>
             © {YEAR} {BRAND.name}
           </span>
